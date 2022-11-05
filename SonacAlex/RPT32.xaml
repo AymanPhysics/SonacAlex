@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="RPT32"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="318" d:DesignWidth="603">
+    <Grid Background="{DynamicResource Bg}">
+        <Grid Margin="13,19,14,59">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#FF6DD9FF" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" IsReadOnly="True" IsTabStop="False" Margin="258,10,98,202" MaxLength="100" x:Name="OrderTypeName" TabIndex="1" VerticalAlignment="Center" Width="220" >
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="الطلبية" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="52,10,404,202" x:Name="lblOrderTypeId" UseLayoutRounding="True" VerticalAlignment="Center" Width="120"  TabIndex="5"/>
+            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="177,10,323,202" MaxLength="10" x:Name="OrderTypeId" TabIndex="0" VerticalAlignment="Center" Width="76" >
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="الرسالة" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="52,43,404,169" x:Name="lblImportMessageId" UseLayoutRounding="True" VerticalAlignment="Center" Width="120" />
+            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="177,43,323,169" MaxLength="10" x:Name="ImportMessageId" TabIndex="4" VerticalAlignment="Center" Width="76">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" IsReadOnly="True" IsTabStop="False" Margin="258,43,98,169" MaxLength="100" x:Name="ImportMessageName" TabIndex="888" VerticalAlignment="Center" Width="220">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="المخزن" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="52,76,404,136" x:Name="lblStoreId" UseLayoutRounding="True" VerticalAlignment="Center" Width="120" />
+            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="177,76,323,136" MaxLength="10" x:Name="StoreId" TabIndex="4" VerticalAlignment="Center" Width="76">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" IsReadOnly="True" IsTabStop="False" Margin="258,76,98,136" MaxLength="100" x:Name="StoreName" TabIndex="888" VerticalAlignment="Center" Width="220">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="مسلسل الفاتورة" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="52,108,404,104" x:Name="lblStoreInvoiceNo" UseLayoutRounding="True" VerticalAlignment="Center" Width="120" />
+            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="177,108,323,104" MaxLength="10" x:Name="StoreInvoiceNo" TabIndex="4" VerticalAlignment="Center" Width="76">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="258,141,98,71" MaxLength="100" x:Name="ItemName" TabIndex="1" Width="220" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="الصنف" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="51,141,405,71" x:Name="lblItemId" UseLayoutRounding="True" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="177,141,323,71" MaxLength="10" x:Name="ItemId" TabIndex="1" Width="76" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="من تاريخ" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="52,174,404,38" x:Name="lblFromDate" UseLayoutRounding="True" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <DatePicker FirstDayOfWeek="Saturday" Height="28" Margin="178,174,269,38" x:Name="FromDate" TabIndex="6" Width="129" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="إلى تاريخ" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="339,174,117,38" x:Name="lblToDate" UseLayoutRounding="True" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <DatePicker FirstDayOfWeek="Saturday" Height="28" Margin="465,174,-18,38" x:Name="ToDate" TabIndex="7" Width="129" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Grid>
+        <Button Content="View" HorizontalAlignment="Center"  Name="Button2" TabIndex="20" VerticalAlignment="Bottom" Width="380" Margin="112,0,111,9" Style="{StaticResource GlossyCloseButton}" Height="44" Foreground="Black" Background="{DynamicResource BgSave}"/>
+        <Button  Content="احتساب تكلفة الأصناف" HorizontalAlignment="Right"  x:Name="BtnCalc" TabIndex="20" VerticalAlignment="Bottom"  Width="265" Margin="0,0,14,9" Style="{StaticResource GlossyCloseButton}" Height="44" Foreground="Black" Background="{DynamicResource BgSave}" />
+    </Grid>
+</UserControl>

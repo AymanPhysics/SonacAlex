@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+  <language Name="عربى" Dic="Dic_Ar.xaml" Image="/OMEGA;component/Flags/Egypt.png" FlowDirection="1" Visibility="0"/>
+  <language Name="English" Dic="Dic_En.xaml" Image="/OMEGA;component/Flags/England.png" FlowDirection="0" Visibility="0"/>
+</languages>
+

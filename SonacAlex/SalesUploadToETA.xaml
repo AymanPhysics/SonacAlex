@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="SalesUploadToETA"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="264" d:DesignWidth="829.776">
+    <Grid Background="{DynamicResource Bg}">
+        <Button Content="إرسال إلى مصلحة الضرائب"  Margin="237,0,0,10" Name="btnSave" TabIndex="4" VerticalAlignment="Bottom" Width="170" Background="{DynamicResource BgSave}"/>
+        <Button Content="جديد"  Margin="412,214,0,0" Name="btnNew" TabIndex="5" VerticalAlignment="Top" Width="121" Background="{DynamicResource BgNew}"/>
+        <Button Content="إلغاء الفاتورة المحددة" HorizontalAlignment="Right"  Margin="0,0,11.6,10" Name="btnDelete" TabIndex="6" VerticalAlignment="Bottom" Width="136" Background="{DynamicResource BgDelete}" Height="38"/>
+
+        <Grid Margin="12,12,11.8,53">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#FF6DD9FF" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="من تاريخ" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,10,499.8,0" x:Name="lblDayDate" UseLayoutRounding="True" VerticalAlignment="Top" Width="120" />
+            <DatePicker FirstDayOfWeek="Saturday" Height="28" HorizontalAlignment="Left" Margin="134,10,367.8,0" x:Name="FromDate" TabIndex="2" VerticalAlignment="Top" Width="128" />
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="إلى تاريخ" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="267,10,242.8,0" x:Name="lblDayDate_Copy" UseLayoutRounding="True" VerticalAlignment="Top" Width="120" />
+            <DatePicker FirstDayOfWeek="Saturday" Height="28" HorizontalAlignment="Left" Margin="391,10,110.8,0" x:Name="ToDate" TabIndex="2" VerticalAlignment="Top" Width="128" />
+            <Button Content="تحديث"  Margin="267,43,0,0" x:Name="btnGet" TabIndex="4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="105" Background="{DynamicResource BgSave}"/>
+            <WindowsFormsHost Margin="10,81,9.8,36" x:Name="WFH" Background="{x:Null}" TabIndex="10"/>
+            <Button Content="تحديث الحالة من البورتال"  Margin="0,4,9.8,0" x:Name="btnGet2" TabIndex="4" VerticalAlignment="Top" HorizontalAlignment="Right" Width="162" Background="{DynamicResource BgSave}"/>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="ملاحظات الإلغاء" Foreground="#FF078200" Height="28" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="0,0,276.8,3" x:Name="lblNotes" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="120" />
+            <TextBox AutoWordSelection="True" Height="28" MaxLength="1000" x:Name="Notes" TabIndex="16" VerticalAlignment="Bottom" Margin="0,0,4.8,3" HorizontalAlignment="Right" Width="267">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="TokenPin" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,43,0,0" x:Name="lblDayDate_Copy1" UseLayoutRounding="True" VerticalAlignment="Top" Width="120" />
+            <ComboBox Height="28" HorizontalAlignment="Left" IsSynchronizedWithCurrentItem="{x:Null}" Margin="135,43,0,0" x:Name="TokenPin" TabIndex="8" VerticalAlignment="Top" Width="128" IsEditable="False" IsTabStop="False">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+        </Grid>
+        <Button Content="إعادة رفع الفاتورة المحددة" HorizontalAlignment="Right"  Margin="0,0,152.6,10" x:Name="btnDelete_Copy" TabIndex="6" VerticalAlignment="Bottom" Width="136" Background="{DynamicResource BgDelete}" Height="38"/>
+        <Button  Content="تحديد الكل"  Margin="12,0,0,10" x:Name="btnIsSelected" TabIndex="12" VerticalAlignment="Bottom" Width="147" Background="{DynamicResource BgDelete}" IsTabStop="False" Height="38"/>
+    </Grid>
+</UserControl>
