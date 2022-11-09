@@ -502,6 +502,11 @@ Partial Public Class MainPage
                                                                  sender.Tag = New MyPage With {.Content = frm}
                                                              End Sub
 
+        AddHandler LoadRadio(243, G, "Grades").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                            frm = New BasicForm With {.TableName = "Grades"}
+                                                            sender.Tag = New MyPage With {.Content = frm}
+                                                        End Sub
+
         AddHandler LoadRadio(215, G, "Marks").Checked, Sub(sender As Object, e As RoutedEventArgs)
                                                            frm = New BasicForm With {.TableName = "Marks"}
                                                            sender.Tag = New MyPage With {.Content = frm}
@@ -688,7 +693,7 @@ Partial Public Class MainPage
                                                                       sender.Tag = New MyPage With {.Content = frm}
                                                                   End Sub
 
-        '242
+        '243
     End Sub
 
     Private Sub LoadGStores(CurrentTab As Integer)

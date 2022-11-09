@@ -45,6 +45,7 @@ Public Class ProForma
     Structure GC
         Shared ItemsTitleId As String = "ItemsTitleId"
         Shared Id As String = "Id"
+        Shared GradeId As String = "GradeId"
         Shared Mark As String = "Mark"
         Shared ContainerTypeId As String = "ContainerTypeId"
         Shared UnitQty As String = "UnitQty"
@@ -52,6 +53,7 @@ Public Class ProForma
         Shared UnitsWeightQty As String = "UnitsWeightQty"
         Shared PreQty As String = "PreQty"
         Shared Qty As String = "Qty"
+        Shared QtyTon As String = "QtyTon"
         Shared Price As String = "Price"
         Shared PriceTypeId As String = "PriceTypeId"
         Shared Value As String = "Value"
@@ -80,6 +82,12 @@ Public Class ProForma
         bm.FillCombo("select 0 Id,'' Name union select Id,cast(Id as nvarchar(100))+' - '+EnName From Items where IsStopped=0 and IsExports=1", GCId)
         G.Columns.Add(GCId)
 
+        Dim GCGradeId As New Forms.DataGridViewComboBoxColumn
+        GCGradeId.HeaderText = "Grade"
+        GCGradeId.Name = GC.GradeId
+        bm.FillCombo("select 0 Id,'' Name union select Id,Name From Grades", GCGradeId)
+        G.Columns.Add(GCGradeId)
+
         'Dim GCMarkId As New Forms.DataGridViewComboBoxColumn
         'GCMarkId.HeaderText = "Mark"
         'GCMarkId.Name = GC.MarkId
@@ -89,7 +97,7 @@ Public Class ProForma
         G.Columns.Add(GC.Mark, "Mark")
 
         Dim GCContainerTypeId As New Forms.DataGridViewComboBoxColumn
-        GCContainerTypeId.HeaderText = "Container Type"
+        GCContainerTypeId.HeaderText = "Package Type"
         GCContainerTypeId.Name = GC.ContainerTypeId
         bm.FillCombo("select 0 Id,'' Name union select Id,cast(Id as nvarchar(100))+' - '+Name From ContainerTypes", GCContainerTypeId)
         G.Columns.Add(GCContainerTypeId)
@@ -106,7 +114,8 @@ Public Class ProForma
 
 
         G.Columns.Add(GC.PreQty, "Qty")
-        G.Columns.Add(GC.Qty, "Net Weight")
+        G.Columns.Add(GC.Qty, "Net Weight /Kg")
+        G.Columns.Add(GC.QtyTon, "Net Weight /Ton")
 
         G.Columns.Add(GC.Price, "Price")
 
@@ -133,6 +142,7 @@ Public Class ProForma
 
         G.Columns(GC.ItemsTitleId).FillWeight = 150
         G.Columns(GC.Id).FillWeight = 300 '110
+        G.Columns(GC.GradeId).FillWeight = 150
         G.Columns(GC.Mark).FillWeight = 200
         G.Columns(GC.ContainerTypeId).FillWeight = 200
 
@@ -151,6 +161,7 @@ Public Class ProForma
 
         G.Columns(GC.Line).Visible = False
         G.Columns(GC.Qty).ReadOnly = True
+        G.Columns(GC.QtyTon).ReadOnly = True
 
         G.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
 
@@ -191,10 +202,12 @@ Public Class ProForma
             G.Rows(i).HeaderCell.Value = (i + 1).ToString
             G.Rows(i).Cells(GC.ItemsTitleId).Value = dt.Rows(i)("ItemsTitleId").ToString
             G.Rows(i).Cells(GC.Id).Value = dt.Rows(i)("ItemId").ToString
+            G.Rows(i).Cells(GC.GradeId).Value = dt.Rows(i)("GradeId").ToString
             G.Rows(i).Cells(GC.Mark).Value = dt.Rows(i)("Mark").ToString
             G.Rows(i).Cells(GC.ContainerTypeId).Value = dt.Rows(i)("ContainerTypeId").ToString
             G.Rows(i).Cells(GC.UnitQty).Value = dt.Rows(i)("UnitQty").ToString
             G.Rows(i).Cells(GC.Qty).Value = dt.Rows(i)("Qty").ToString
+            G.Rows(i).Cells(GC.QtyTon).Value = dt.Rows(i)("QtyTon").ToString
             G.Rows(i).Cells(GC.Price).Value = dt.Rows(i)("Price").ToString
             G.Rows(i).Cells(GC.PriceTypeId).Value = dt.Rows(i)("PriceTypeId").ToString
             G.Rows(i).Cells(GC.Value).Value = dt.Rows(i)("Value").ToString
@@ -273,7 +286,7 @@ Public Class ProForma
             Return
         End If
 
-        If Not bm.SaveGrid(G, TableDetailsName, New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text}, New String() {"ItemsTitleId", "ItemId", "Mark", "ContainerTypeId", "Qty", "Price", "PriceTypeId", "Value", "SD_Notes", "UnitsWeightId", "UnitsWeightQty", "PreQty", "TypeOfPriceId", "Sizes"}, New String() {GC.ItemsTitleId, GC.Id, GC.Mark, GC.ContainerTypeId, GC.Qty, GC.Price, GC.PriceTypeId, GC.Value, GC.SD_Notes, GC.UnitsWeightId, GC.UnitsWeightQty, GC.PreQty, GC.TypeOfPriceId, GC.Sizes}, New VariantType() {VariantType.Integer, VariantType.Integer, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.Decimal, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.String}, New String() {}) Then Return
+        If Not bm.SaveGrid(G, TableDetailsName, New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text}, New String() {"ItemsTitleId", "ItemId", "GradeId", "Mark", "ContainerTypeId", "Qty", "QtyTon", "Price", "PriceTypeId", "Value", "SD_Notes", "UnitsWeightId", "UnitsWeightQty", "PreQty", "TypeOfPriceId", "Sizes"}, New String() {GC.ItemsTitleId, GC.Id, GC.GradeId, GC.Mark, GC.ContainerTypeId, GC.Qty, GC.QtyTon, GC.Price, GC.PriceTypeId, GC.Value, GC.SD_Notes, GC.UnitsWeightId, GC.UnitsWeightQty, GC.PreQty, GC.TypeOfPriceId, GC.Sizes}, New VariantType() {VariantType.Integer, VariantType.Integer, VariantType.Integer, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.Decimal, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.String}, New String() {}) Then Return
 
 
         If Not bm.Save(New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text},, TableDetailsName) Then Return
@@ -287,10 +300,12 @@ Public Class ProForma
     Sub ClearRow(ByVal i As Integer)
         G.Rows(i).Cells(GC.ItemsTitleId).Value = Nothing
         G.Rows(i).Cells(GC.Id).Value = Nothing
+        G.Rows(i).Cells(GC.GradeId).Value = Nothing
         G.Rows(i).Cells(GC.Mark).Value = Nothing
         G.Rows(i).Cells(GC.ContainerTypeId).Value = Nothing
         G.Rows(i).Cells(GC.UnitQty).Value = Nothing
         G.Rows(i).Cells(GC.Qty).Value = Nothing
+        G.Rows(i).Cells(GC.QtyTon).Value = Nothing
         G.Rows(i).Cells(GC.Price).Value = Nothing
         G.Rows(i).Cells(GC.PriceTypeId).Value = Nothing
         G.Rows(i).Cells(GC.Value).Value = Nothing
@@ -316,10 +331,11 @@ Public Class ProForma
             ElseIf G.Columns(e.ColumnIndex).Name = GC.PreQty OrElse G.Columns(e.ColumnIndex).Name = GC.UnitsWeightQty Then
                 G.Rows(e.RowIndex).Cells(GC.Qty).Value = bm.Round(Val(G.Rows(e.RowIndex).Cells(GC.UnitsWeightQty).Value) * Val(G.Rows(e.RowIndex).Cells(GC.PreQty).Value))
             End If
+            G.Rows(e.RowIndex).Cells(GC.QtyTon).Value = bm.Round(Val(G.Rows(e.RowIndex).Cells(GC.Qty).Value) / 1000)
             If Val(G.Rows(e.RowIndex).Cells(GC.PriceTypeId).Value) = 1 Then
                 G.Rows(e.RowIndex).Cells(GC.Value).Value = bm.Round(Val(G.Rows(e.RowIndex).Cells(GC.PreQty).Value) * Val(G.Rows(e.RowIndex).Cells(GC.Price).Value))
             ElseIf Val(G.Rows(e.RowIndex).Cells(GC.PriceTypeId).Value) = 2 Then
-                G.Rows(e.RowIndex).Cells(GC.Value).Value = bm.Round(Val(G.Rows(e.RowIndex).Cells(GC.Qty).Value) * Val(G.Rows(e.RowIndex).Cells(GC.Price).Value) / 1000)
+                G.Rows(e.RowIndex).Cells(GC.Value).Value = bm.Round(Val(G.Rows(e.RowIndex).Cells(GC.QtyTon).Value) * Val(G.Rows(e.RowIndex).Cells(GC.Price).Value))
             Else
                 G.Rows(e.RowIndex).Cells(GC.Value).Value = 0
             End If
