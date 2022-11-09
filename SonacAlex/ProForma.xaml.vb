@@ -1,9 +1,12 @@
-﻿Imports System.Data
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar
+﻿
+Imports System.Data
+Imports Net.Pkcs11Interop.HighLevelAPI
+Imports Org.BouncyCastle.X509
 
 Public Class ProForma
     Public TableName As String = "ProFormaMaster"
     Public TableDetailsName As String = "ProFormaDetails"
+    Public TableDetailsName2 As String = "ProFormaPayments"
     Public MainId As String = "CustomerId"
     Public SubId As String = "Flag"
     Public SubId2 As String = "InvoiceNo"
@@ -13,7 +16,10 @@ Public Class ProForma
     Dim bm As New BasicMethods
 
     WithEvents G As New MyGrid
+    WithEvents G2 As New MyGrid
     Public Flag As Integer = 0
+    Public IsPayments As Boolean = False
+
 
     Private Sub BasicForm_Loaded(ByVal sender As Object, ByVal e As System.Windows.RoutedEventArgs) Handles Me.Loaded
         If bm.TestIsLoaded(Me) Then Return
@@ -34,13 +40,50 @@ Public Class ProForma
         bm.KeyFields = New String() {MainId, SubId, SubId2}
         bm.Table_Name = TableName
 
+        If Flag <> MyFlag.ProForma Then
+            WFH2.Visibility = Visibility.Collapsed
+            WFH.Margin = New Thickness(10, WFH.Margin.Top, 10, WFH.Margin.Bottom)
+        End If
+
         LoadWFH()
+        LoadWFH2()
+
+        If IsPayments Then
+            G.ReadOnly = True
+            'DayDate.IsEnabled = False
+            Canceled.IsEnabled = False
+            CurrencyId.IsEnabled = False
+            IsPosted.IsEnabled = False
+            ShippedPerId.IsEnabled = False
+            FromPortId.IsEnabled = False
+            ToPortId.IsEnabled = False
+            Advance.IsEnabled = False
+            Remaining.IsEnabled = False
+            Total.IsEnabled = False
+            AdvanceDate.IsEnabled = False
+            RemainingDate.IsEnabled = False
+            BankId.IsEnabled = False
+            Freight.IsEnabled = False
+            PaymentMothod.IsEnabled = False
+            Notes.IsEnabled = False
+            SubCustomerId.IsEnabled = False
+        Else
+            G2.ReadOnly = True
+        End If
+
 
         btnNew_Click(sender, e)
         CustomerId.Focus()
+
     End Sub
 
 
+    Private Sub InvoiceNo_KeyUp(sender As Object, e As KeyEventArgs) Handles txtID.KeyUp
+        If bm.ShowHelpMultiColumns(CType(Parent, Page).Title, txtID, txtID, e, "exec Help_ProFormaMaster " & Val(CustomerId.Text) & "," & Flag) Then
+            txtID_LostFocus(Nothing, Nothing)
+        End If
+
+    End Sub
 
     Structure GC
         Shared ItemsTitleId As String = "ItemsTitleId"
@@ -163,7 +206,7 @@ Public Class ProForma
         G.Columns(GC.Qty).ReadOnly = True
         G.Columns(GC.QtyTon).ReadOnly = True
 
-        G.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        G.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
 
         If Flag = MyFlag.ISO Then
             G.Columns(GC.Price).Visible = False
@@ -174,6 +217,55 @@ Public Class ProForma
 
         AddHandler G.CellEndEdit, AddressOf GridCalcRow
         AddHandler G.KeyDown, AddressOf GridKeyDown
+    End Sub
+
+
+
+    Structure GC2
+        Shared MyIndex As String = "MyIndex"
+        Shared Transfers As String = "Transfers"
+        Shared Deductions As String = "Deductions"
+        Shared Description As String = "Description"
+        Shared DayDate As String = "DayDate"
+        Shared Line As String = "Line"
+    End Structure
+
+    Private Sub LoadWFH2()
+        WFH2.Child = G2
+
+        G2.Columns.Clear()
+        G2.ForeColor = System.Drawing.Color.DarkBlue
+
+        G2.Columns.Add(GC2.MyIndex, "Index")
+
+        G2.Columns.Add(GC2.Transfers, "Transfers")
+        G2.Columns.Add(GC2.Deductions, "Deductions")
+
+        G2.Columns.Add(GC2.Description, "Description")
+        G2.Columns.Add(GC2.DayDate, "DayDate")
+        G2.Columns.Add(GC2.Line, "Line")
+
+
+        G2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+
+        G2.Columns(GC2.DayDate).FillWeight = 200
+        G2.Columns(GC2.Description).FillWeight = 300
+        G2.Columns(GC2.MyIndex).ReadOnly = True
+        G2.Columns(GC2.DayDate).ReadOnly = True
+        G2.Columns(GC2.MyIndex).Visible = False
+        G2.Columns(GC2.Line).Visible = False
+
+
+
+        AddHandler G2.CellEndEdit, AddressOf GridCalcRow2
+
+    End Sub
+
+    Private Sub GridCalcRow2(sender As Object, e As Forms.DataGridViewCellEventArgs)
+        G2.Rows(e.RowIndex).Cells(GC2.MyIndex).Value = e.RowIndex + 1
+        If G2.Rows(e.RowIndex).Cells(GC2.DayDate).Value Is Nothing OrElse G2.Rows(e.RowIndex).Cells(GC2.DayDate).Value.ToString = "" Then
+            G2.Rows(e.RowIndex).Cells(GC2.DayDate).Value = bm.ExecuteScalar("select dbo.MyGetDateTime()")
+        End If
     End Sub
 
     Private Sub btnLast_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLast.Click
@@ -222,6 +314,21 @@ Public Class ProForma
         Next
 
 
+
+        dt = bm.ExecuteAdapter("select * from " & TableDetailsName2 & " where " & MainId & "=" & CustomerId.Text & " and " & SubId & "=" & txtFlag.Text.Trim & " and " & SubId2 & "=" & txtID.Text)
+
+        G2.Rows.Clear()
+        For i As Integer = 0 To dt.Rows.Count - 1
+            G2.Rows.Add()
+            G2.Rows(i).HeaderCell.Value = (i + 1).ToString
+            G2.Rows(i).Cells(GC2.MyIndex).Value = dt.Rows(i)("MyIndex").ToString
+            G2.Rows(i).Cells(GC2.Transfers).Value = dt.Rows(i)("Transfers").ToString
+            G2.Rows(i).Cells(GC2.Deductions).Value = dt.Rows(i)("Deductions").ToString
+            G2.Rows(i).Cells(GC2.Description).Value = dt.Rows(i)("Description").ToString
+            G2.Rows(i).Cells(GC2.DayDate).Value = bm.ToStrDateTime(dt.Rows(i)("DayDate"))
+            G2.Rows(i).Cells(GC2.Line).Value = dt.Rows(i)("Line").ToString
+        Next
+
         MyAttach.Key1 = Val(CustomerId.Text)
         MyAttach.Key2 = Val(txtID.Text)
         MyAttach.Flag = Flag
@@ -238,6 +345,71 @@ Public Class ProForma
         End If
 
     End Sub
+
+    Sub FillControls(MyFlag As Integer, MyInvoiceNo As Integer)
+        If lop Then Return
+        lop = True
+
+        btnSave.IsEnabled = True
+        btnDelete.IsEnabled = True
+
+        DayDate.Focus()
+
+        Dim dt As DataTable = bm.ExecuteAdapter("select * from " & TableDetailsName & " where " & MainId & "=" & CustomerId.Text & " and " & SubId & "=" & MyFlag & " and " & SubId2 & "=" & MyInvoiceNo)
+
+        DayDate.SelectedDate = dt.Rows(0)("DayDate")
+        CurrencyId.SelectedValue = dt.Rows(0)("CurrencyId")
+        ShippedPerId.SelectedValue = dt.Rows(0)("ShippedPerId")
+        FromPortId.SelectedValue = dt.Rows(0)("FromPortId")
+        ToPortId.SelectedValue = dt.Rows(0)("ToPortId")
+        Advance.Text = dt.Rows(0)("Advance")
+        Remaining.Text = dt.Rows(0)("Remaining")
+        Total.Text = dt.Rows(0)("Total")
+        AdvanceDate.SelectedDate = dt.Rows(0)("AdvanceDate")
+        RemainingDate.SelectedDate = dt.Rows(0)("RemainingDate")
+        BankId.SelectedValue = dt.Rows(0)("BankId")
+        Freight.Text = dt.Rows(0)("Freight")
+        PaymentMothod.Text = dt.Rows(0)("PaymentMothod")
+        Notes.Text = dt.Rows(0)("Notes")
+        SubCustomerId.Text = dt.Rows(0)("SubCustomerId")
+
+
+        SubCustomerId_LostFocus(Nothing, Nothing)
+
+        G.Rows.Clear()
+        For i As Integer = 0 To dt.Rows.Count - 1
+            G.Rows.Add()
+            G.Rows(i).HeaderCell.Value = (i + 1).ToString
+            G.Rows(i).Cells(GC.ItemsTitleId).Value = dt.Rows(i)("ItemsTitleId").ToString
+            G.Rows(i).Cells(GC.Id).Value = dt.Rows(i)("ItemId").ToString
+            G.Rows(i).Cells(GC.GradeId).Value = dt.Rows(i)("GradeId").ToString
+            G.Rows(i).Cells(GC.Mark).Value = dt.Rows(i)("Mark").ToString
+            G.Rows(i).Cells(GC.ContainerTypeId).Value = dt.Rows(i)("ContainerTypeId").ToString
+            G.Rows(i).Cells(GC.UnitQty).Value = dt.Rows(i)("UnitQty").ToString
+            G.Rows(i).Cells(GC.Qty).Value = dt.Rows(i)("Qty").ToString
+            G.Rows(i).Cells(GC.QtyTon).Value = dt.Rows(i)("QtyTon").ToString
+            G.Rows(i).Cells(GC.Price).Value = dt.Rows(i)("Price").ToString
+            G.Rows(i).Cells(GC.PriceTypeId).Value = dt.Rows(i)("PriceTypeId").ToString
+            G.Rows(i).Cells(GC.Value).Value = dt.Rows(i)("Value").ToString
+            G.Rows(i).Cells(GC.TypeOfPriceId).Value = dt.Rows(i)("TypeOfPriceId").ToString
+            G.Rows(i).Cells(GC.Line).Value = dt.Rows(i)("Line").ToString
+            G.Rows(i).Cells(GC.Sizes).Value = dt.Rows(i)("Sizes").ToString
+            G.Rows(i).Cells(GC.SD_Notes).Value = dt.Rows(i)("SD_Notes").ToString
+
+            G.Rows(i).Cells(GC.UnitsWeightId).Value = dt.Rows(i)("UnitsWeightId").ToString
+            G.Rows(i).Cells(GC.UnitsWeightQty).Value = dt.Rows(i)("UnitsWeightQty").ToString
+            G.Rows(i).Cells(GC.PreQty).Value = dt.Rows(i)("PreQty").ToString
+        Next
+
+
+
+        DayDate.Focus()
+        G.RefreshEdit()
+        lop = False
+        CalcTotal()
+
+    End Sub
+
     Private Sub btnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNext.Click
         bm.NextPrevious(New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text, txtID.Text}, "Next", dt)
         If dt.Rows.Count = 0 Then Return
@@ -254,6 +426,7 @@ Public Class ProForma
         If Not bm.TestDateValidity(DayDate) Then Return
 
         G.EndEdit()
+        G2.EndEdit()
 
         For i As Integer = 0 To G.Rows.Count - 1
             If Val(G.Rows(i).Cells(GC.Value).Value) = 0 Then
@@ -289,6 +462,9 @@ Public Class ProForma
         If Not bm.SaveGrid(G, TableDetailsName, New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text}, New String() {"ItemsTitleId", "ItemId", "GradeId", "Mark", "ContainerTypeId", "Qty", "QtyTon", "Price", "PriceTypeId", "Value", "SD_Notes", "UnitsWeightId", "UnitsWeightQty", "PreQty", "TypeOfPriceId", "Sizes"}, New String() {GC.ItemsTitleId, GC.Id, GC.GradeId, GC.Mark, GC.ContainerTypeId, GC.Qty, GC.QtyTon, GC.Price, GC.PriceTypeId, GC.Value, GC.SD_Notes, GC.UnitsWeightId, GC.UnitsWeightQty, GC.PreQty, GC.TypeOfPriceId, GC.Sizes}, New VariantType() {VariantType.Integer, VariantType.Integer, VariantType.Integer, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.Decimal, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.String}, New String() {}) Then Return
 
 
+        If Not bm.SaveGrid(G2, TableDetailsName2, New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text}, New String() {"MyIndex", "Transfers", "Deductions", "Description", "DayDate"}, New String() {GC2.MyIndex, GC2.Transfers, GC2.Deductions, GC2.Description, GC2.DayDate}, New VariantType() {VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.String, VariantType.String}, New String() {}, "Line", "Line") Then Return
+
+
         If Not bm.Save(New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text},, TableDetailsName) Then Return
 
         If Not DontClear Then btnNew_Click(sender, e)
@@ -317,6 +493,7 @@ Public Class ProForma
         G.Rows(i).Cells(GC.UnitsWeightId).Value = Nothing
         G.Rows(i).Cells(GC.UnitsWeightQty).Value = Nothing
         G.Rows(i).Cells(GC.PreQty).Value = Nothing
+
     End Sub
 
     Private Sub GridCalcRow(ByVal sender As Object, ByVal e As Forms.DataGridViewCellEventArgs)
@@ -366,6 +543,7 @@ Public Class ProForma
 
         DayDate.SelectedDate = bm.MyGetDate()
         G.Rows.Clear()
+        G2.Rows.Clear()
         CalcTotal()
 
         CustomerId_LostFocus(Nothing, Nothing)
@@ -543,5 +721,48 @@ Public Class ProForma
                 rpt.Rpt = "RealInvoice.rpt"
         End Select
         rpt.Show()
+    End Sub
+
+    Private Sub btnCopy1_Click(sender As Object, e As RoutedEventArgs) Handles btnCopy1.Click, btnCopy2.Click, btnCopy3.Click, btnCopy4.Click
+        If Val(txtID.Text) = 0 Then
+            Return
+        End If
+
+        Dim frm As New ProForma
+        Dim MyTitle As String = String.Empty
+        Dim id As Integer
+        If sender Is btnCopy1 Then
+            frm.Flag = MyFlag.ProForma
+            MyTitle = "Proforma Invoice"
+            id = 204
+        ElseIf sender Is btnCopy2 Then
+            frm.Flag = MyFlag.ISO
+            MyTitle = "Iso"
+            id = 237
+        ElseIf sender Is btnCopy3 Then
+            frm.Flag = MyFlag.CustomsInvoice
+            MyTitle = "Customs Invoice"
+            id = 238
+        ElseIf sender Is btnCopy4 Then
+            frm.Flag = MyFlag.RealInvoice
+            MyTitle = "Invoice"
+            id = 239
+        Else
+            Return
+        End If
+
+        Dim w As New MyWindow With {.Content = frm, .Title = MyTitle}
+
+        w.MySecurityType.AllowEdit = dtLevelsMenuitems.Select("Id=" & id).ToList(0)("AllowEdit") = 1
+        w.MySecurityType.AllowDelete = dtLevelsMenuitems.Select("Id=" & id).ToList(0)("AllowDelete") = 1
+        w.MySecurityType.AllowNavigate = dtLevelsMenuitems.Select("Id=" & id).ToList(0)("AllowNavigate") = 1
+        w.MySecurityType.AllowPrint = dtLevelsMenuitems.Select("Id=" & id).ToList(0)("AllowPrint") = 1
+        w.Show()
+        frm.BasicForm_Loaded(Nothing, Nothing)
+        w.WindowState = WindowState.Maximized
+        frm.CustomerId.Text = CustomerId.Text
+        frm.CustomerId_LostFocus(Nothing, Nothing)
+        frm.FillControls(Flag, Val(txtID.Text))
+
     End Sub
 End Class

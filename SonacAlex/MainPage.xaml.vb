@@ -625,6 +625,11 @@ Partial Public Class MainPage
                                                                       sender.Tag = New MyPage With {.Content = frm}
                                                                   End Sub
 
+        AddHandler LoadRadio(244, G, "Proforma Invoice - Payments").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                                                 frm = New ProForma With {.Flag = MyFlag.ProForma, .IsPayments = True}
+                                                                                 sender.Tag = New MyPage With {.Content = frm}
+                                                                             End Sub
+
         AddHandler LoadRadio(235, G, "Booking").Checked, Sub(sender As Object, e As RoutedEventArgs)
                                                              frm = New Booking
                                                              sender.Tag = New MyPage With {.Content = frm}
@@ -640,10 +645,10 @@ Partial Public Class MainPage
                                                          sender.Tag = New MyPage With {.Content = frm}
                                                      End Sub
 
-        AddHandler LoadRadio(238, G, "CustomsInvoice").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                                    frm = New ProForma With {.Flag = MyFlag.CustomsInvoice}
-                                                                    sender.Tag = New MyPage With {.Content = frm}
-                                                                End Sub
+        AddHandler LoadRadio(238, G, "Customs Invoice").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                                     frm = New ProForma With {.Flag = MyFlag.CustomsInvoice}
+                                                                     sender.Tag = New MyPage With {.Content = frm}
+                                                                 End Sub
 
         AddHandler LoadRadio(239, G, "Invoice").Checked, Sub(sender As Object, e As RoutedEventArgs)
                                                              frm = New ProForma With {.Flag = MyFlag.RealInvoice}
@@ -652,48 +657,48 @@ Partial Public Class MainPage
 
 
 
-        LoadLabel(240, G, "")
+        'LoadLabel(240, G, "")
 
-        ''''''''''''''''''''''''''''''
+        '''''''''''''''''''''''''''''''
 
-        AddHandler LoadRadio(206, G, "Files").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                           frm = New Files
-                                                           sender.Tag = New MyPage With {.Content = frm}
-                                                       End Sub
+        'AddHandler LoadRadio(206, G, "Files").Checked, Sub(sender As Object, e As RoutedEventArgs)
+        '                                                   frm = New Files
+        '                                                   sender.Tag = New MyPage With {.Content = frm}
+        '                                               End Sub
 
-        AddHandler LoadRadio(207, G, "Bills").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                           frm = New Bills
-                                                           sender.Tag = New MyPage With {.Content = frm}
-                                                       End Sub
+        'AddHandler LoadRadio(207, G, "Bills").Checked, Sub(sender As Object, e As RoutedEventArgs)
+        '                                                   frm = New Bills
+        '                                                   sender.Tag = New MyPage With {.Content = frm}
+        '                                               End Sub
 
-        AddHandler LoadRadio(208, G, "Payments").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                              frm = New Outcomes
-                                                              sender.Tag = New MyPage With {.Content = frm}
-                                                          End Sub
+        'AddHandler LoadRadio(208, G, "Payments").Checked, Sub(sender As Object, e As RoutedEventArgs)
+        '                                                      frm = New Outcomes
+        '                                                      sender.Tag = New MyPage With {.Content = frm}
+        '                                                  End Sub
 
-        LoadLabel(213, G, "Loadings Sheet")
+        'LoadLabel(213, G, "Loadings Sheet")
 
-        AddHandler LoadRadio(209, G, "Loadings Sheet 1").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                                      frm = New LoadingSheet With {.Flag = 1}
-                                                                      sender.Tag = New MyPage With {.Content = frm}
-                                                                  End Sub
+        'AddHandler LoadRadio(209, G, "Loadings Sheet 1").Checked, Sub(sender As Object, e As RoutedEventArgs)
+        '                                                              frm = New LoadingSheet With {.Flag = 1}
+        '                                                              sender.Tag = New MyPage With {.Content = frm}
+        '                                                          End Sub
 
-        AddHandler LoadRadio(210, G, "Loadings Sheet 2").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                                      frm = New LoadingSheet With {.Flag = 2}
-                                                                      sender.Tag = New MyPage With {.Content = frm}
-                                                                  End Sub
+        'AddHandler LoadRadio(210, G, "Loadings Sheet 2").Checked, Sub(sender As Object, e As RoutedEventArgs)
+        '                                                              frm = New LoadingSheet With {.Flag = 2}
+        '                                                              sender.Tag = New MyPage With {.Content = frm}
+        '                                                          End Sub
 
-        AddHandler LoadRadio(211, G, "Loadings Sheet 3").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                                      frm = New LoadingSheet With {.Flag = 3}
-                                                                      sender.Tag = New MyPage With {.Content = frm}
-                                                                  End Sub
+        'AddHandler LoadRadio(211, G, "Loadings Sheet 3").Checked, Sub(sender As Object, e As RoutedEventArgs)
+        '                                                              frm = New LoadingSheet With {.Flag = 3}
+        '                                                              sender.Tag = New MyPage With {.Content = frm}
+        '                                                          End Sub
 
-        AddHandler LoadRadio(212, G, "Loadings Sheet 4").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                                      frm = New LoadingSheet With {.Flag = 4}
-                                                                      sender.Tag = New MyPage With {.Content = frm}
-                                                                  End Sub
+        'AddHandler LoadRadio(212, G, "Loadings Sheet 4").Checked, Sub(sender As Object, e As RoutedEventArgs)
+        '                                                              frm = New LoadingSheet With {.Flag = 4}
+        '                                                              sender.Tag = New MyPage With {.Content = frm}
+        '                                                          End Sub
 
-        '243
+        '244
     End Sub
 
     Private Sub LoadGStores(CurrentTab As Integer)

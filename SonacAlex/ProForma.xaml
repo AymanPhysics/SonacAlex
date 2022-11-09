@@ -72,7 +72,7 @@
                 </ComboBox.Background>
 
             </ComboBox>
-            <WindowsFormsHost Margin="10,242,9,115" x:Name="WFH" Background="{x:Null}" TabIndex="10"/>
+            <WindowsFormsHost Margin="10,242,413,115" x:Name="WFH" Background="{x:Null}" TabIndex="10"/>
             <TextBox AutoWordSelection="True" Height="28" Margin="391,0,0,78" MaxLength="1000" x:Name="Total" TabIndex="17" VerticalAlignment="Bottom" Width="106" IsReadOnly="True" IsTabStop="False">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -190,15 +190,20 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
+            <WindowsFormsHost Margin="0,242,13,115" x:Name="WFH2" Background="{x:Null}" TabIndex="10" HorizontalAlignment="Right" Width="391"/>
         </Grid>
-        <Button  Content="أول" HorizontalAlignment="Center"  Margin="186,0,420,12" x:Name="btnFirst" TabIndex="13" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
-        <Button  Content="سابق" HorizontalAlignment="Center"  Margin="264,0,342,12" x:Name="btnPrevios" TabIndex="14" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
-        <Button  Content="تالى" HorizontalAlignment="Center"  Margin="342,0,264,12" x:Name="btnNext" TabIndex="15" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
-        <Button  Content="أخير" HorizontalAlignment="Center"  Margin="420,0,186,12" x:Name="btnLast" TabIndex="16" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
-        <Button  Content="حفظ"  Margin="186,0,342,58" x:Name="btnSave" TabIndex="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="150" Background="{DynamicResource BgSave}" IsTabStop="False"/>
-        <Button  Content="جديد" HorizontalAlignment="Center"  Margin="342,0,264,58" x:Name="btnNew" TabIndex="12" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgNew}" IsTabStop="False"/>
-        <Button  Content="مسح"  Margin="420,0,186,58" x:Name="btnDelete" TabIndex="12" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="72" Background="{DynamicResource BgDelete}" IsTabStop="False"/>
-        <Button Content="Delete current row" HorizontalAlignment="Center"  Margin="565,0,12,58" x:Name="btnDeleteRow" TabIndex="103" VerticalAlignment="Bottom" Width="140" Background="{DynamicResource BgDelete}" IsTabStop="False" Height="38"/>
-        <Button  Content="طباعة"  Margin="269,0,0,10" x:Name="btnPrint" TabIndex="20" VerticalAlignment="Bottom" Width="150" Background="{DynamicResource BgSave}" IsTabStop="False" Height="87"/>
+        <Button  Content="أول"  Margin="229,0,0,12" x:Name="btnFirst" TabIndex="13" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
+        <Button  Content="سابق"  Margin="307,0,0,12" x:Name="btnPrevios" TabIndex="14" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
+        <Button  Content="تالى"  Margin="384,0,0,12" x:Name="btnNext" TabIndex="15" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
+        <Button  Content="أخير"  Margin="462,0,0,12" x:Name="btnLast" TabIndex="16" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
+        <Button  Content="حفظ"  Margin="229,0,0,58" x:Name="btnSave" TabIndex="20" VerticalAlignment="Bottom" Width="150" Background="{DynamicResource BgSave}" IsTabStop="False"/>
+        <Button  Content="جديد"  Margin="384,0,0,58" x:Name="btnNew" TabIndex="12" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgNew}" IsTabStop="False"/>
+        <Button  Content="مسح"  Margin="462,0,0,58" x:Name="btnDelete" TabIndex="12" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgDelete}" IsTabStop="False"/>
+        <Button Content="Delete current row"  Margin="589,0,0,58" x:Name="btnDeleteRow" TabIndex="103" VerticalAlignment="Bottom" Width="140" Background="{DynamicResource BgDelete}" IsTabStop="False" Height="38"/>
+        <Button  Content="طباعة"  Margin="39,0,0,10" x:Name="btnPrint" TabIndex="20" VerticalAlignment="Bottom" Width="150" Background="{DynamicResource BgSave}" IsTabStop="False" Height="87"/>
+        <Button  Content="Copy To Proforma Invoice"  Margin="763,0,0,57" x:Name="btnCopy1" TabIndex="20" VerticalAlignment="Bottom" Width="190" Background="{DynamicResource BgSave}" IsTabStop="False"/>
+        <Button  Content="Copy To Iso"  Margin="958,0,0,57" x:Name="btnCopy2" TabIndex="20" VerticalAlignment="Bottom" Width="190" Background="{DynamicResource BgSave}" IsTabStop="False"/>
+        <Button  Content="Copy To Customs Invoice"  Margin="763,0,0,10" x:Name="btnCopy3" TabIndex="20" VerticalAlignment="Bottom" Width="190" Background="{DynamicResource BgSave}" IsTabStop="False"/>
+        <Button  Content="Copy To Invoice"  Margin="958,0,0,10" x:Name="btnCopy4" TabIndex="20" VerticalAlignment="Bottom" Width="190" Background="{DynamicResource BgSave}" IsTabStop="False"/>
     </Grid>
 </UserControl>

@@ -2709,7 +2709,8 @@ A:
     End Function
 
     Public Function ToStrDateTime(ByVal dd As DateTime) As String
-        Return (dd.Month.ToString().PadLeft(2, "0") & "/" & dd.Day.ToString().PadLeft(2, "0") & "/" & dd.ToString.Substring(6)).Replace("ص", "am").Replace("م", "pm")
+        Return dd.Year.ToString() & "/" & dd.Month.ToString().PadLeft(2, "0") & "/" & dd.Day.ToString().PadLeft(2, "0") & " " & dd.Hour.ToString().PadLeft(2, "0") & ":" & dd.Minute.ToString().PadLeft(2, "0")
+        'Return (dd.Month.ToString().PadLeft(2, "0") & "/" & dd.Day.ToString().PadLeft(2, "0") & "/" & dd.ToString.Substring(6)).Replace("ص", "am").Replace("م", "pm")
     End Function
 
     Public Sub FillCombo(ByVal cbo As ComboBox, ByVal tbl As String, ByVal SubId As String, ByVal SubName As String)
