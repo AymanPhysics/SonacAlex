@@ -21,7 +21,7 @@ Public Class ProForma
     Public IsPayments As Boolean = False
 
 
-    Private Sub BasicForm_Loaded(ByVal sender As Object, ByVal e As System.Windows.RoutedEventArgs) Handles Me.Loaded
+    Public Sub BasicForm_Loaded(ByVal sender As Object, ByVal e As System.Windows.RoutedEventArgs) Handles Me.Loaded
         If bm.TestIsLoaded(Me) Then Return
 
         MyAttach.Flag = Flag
@@ -578,7 +578,7 @@ Public Class ProForma
     End Sub
     Dim lv As Boolean = False
 
-    Private Sub txtID_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtID.LostFocus
+    Public Sub txtID_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtID.LostFocus
         If lv Then
             Return
         End If
@@ -604,7 +604,7 @@ Public Class ProForma
         bm.MyKeyPress(sender, e, True)
     End Sub
 
-    Private Sub CustomerId_LostFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles CustomerId.LostFocus
+    Public Sub CustomerId_LostFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles CustomerId.LostFocus
 
         If Val(CustomerId.Text.Trim) = 0 Then
             CustomerId.Clear()

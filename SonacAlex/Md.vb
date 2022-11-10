@@ -47,7 +47,7 @@ Module Md
     Public IsMyVeryFruits As Boolean = False
 
     Public UserName, ArName, LevelId, Password, CompanyName, CompanyTel, Nurse As String
-    Public Manager, Receptionist As Boolean
+    Public Manager, Receptionist, IsExports As Boolean
     Public DefaultStore, DefaultSave, DefaultBank As Integer
     Public EnName As String = "Please, Login", Currentpage As String = ""
 

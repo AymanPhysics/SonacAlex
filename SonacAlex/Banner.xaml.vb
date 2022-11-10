@@ -30,6 +30,7 @@ Namespace EmployeeTracker
         Dim t As New DispatcherTimer With {.IsEnabled = True, .Interval = New TimeSpan(0, 0, 0, 0, 100)}
         Dim t2 As New DispatcherTimer With {.IsEnabled = True, .Interval = New TimeSpan(0, 0, 0, 5)}
         Dim t3 As New DispatcherTimer With {.IsEnabled = True, .Interval = New TimeSpan(0, 0, 10)}
+        Dim t4 As New DispatcherTimer With {.IsEnabled = True, .Interval = New TimeSpan(0, 0, 10)}
 
         Public Header As String = ""
         Public StopTimer As Boolean = False
@@ -38,7 +39,7 @@ Namespace EmployeeTracker
             AddHandler t.Tick, AddressOf Tick
             AddHandler t2.Tick, AddressOf Tick2
             AddHandler t3.Tick, AddressOf Tick3
-
+            AddHandler t4.Tick, AddressOf Tick4
             t3.Stop()
         End Sub
 
@@ -48,6 +49,9 @@ Namespace EmployeeTracker
                 t2.Stop()
                 'lblMain.Text = Header
                 'Return
+            End If
+            If IsLogedIn AndAlso Not Md.IsExports Then
+                t4.Stop()
             End If
             Try
                 '"                " &
@@ -110,6 +114,33 @@ Namespace EmployeeTracker
                     c.InvoiceNo_Leave(Nothing, Nothing)
                 End If
                 bm.ExecuteNonQuery("insert MsgTbl(UserName,Msg) select " & Md.UserName & ",'" & dt.Rows(i)("Msg") & "'")
+            Next
+        End Sub
+
+        Private Sub Tick4(sender As Object, e As EventArgs)
+            If Val(Md.UserName) = 0 Then Return
+            Dim id As Integer = 204
+            dt = bm.ExecuteAdapter("GetProFormaPaymentsMSG", {"UserName"}, {Md.UserName})
+            For i As Integer = 0 To dt.Rows.Count - 1
+                Dim Str As String = "New Notification for [" & dt.Rows(i)("C_EnName") & " / " & dt.Rows(i)("SubC_Name") & "], Country:[" & dt.Rows(i)("CN_Name") & "], Transfers:[" & dt.Rows(i)("Transfers") & "], Deductions:[" & dt.Rows(i)("Deductions") & "],Description:[" & dt.Rows(i)("Description") & "], Date:[" & dt.Rows(i)("MyGetDate") & "]"
+                If bm.ShowDeleteMSG(Str, "Open", "Exit") Then
+                    Dim frm As New ProForma With {.Flag = dt.Rows(i)("Flag")}
+                    Dim w As New MyWindow With {.Content = frm, .Title = "Proforma Invoice"}
+
+                    w.MySecurityType.AllowEdit = dtLevelsMenuitems.Select("Id=" & id).ToList(0)("AllowEdit") = 1
+                    w.MySecurityType.AllowDelete = dtLevelsMenuitems.Select("Id=" & id).ToList(0)("AllowDelete") = 1
+                    w.MySecurityType.AllowNavigate = dtLevelsMenuitems.Select("Id=" & id).ToList(0)("AllowNavigate") = 1
+                    w.MySecurityType.AllowPrint = dtLevelsMenuitems.Select("Id=" & id).ToList(0)("AllowPrint") = 1
+                    w.Show()
+                    frm.BasicForm_Loaded(Nothing, Nothing)
+                    w.WindowState = WindowState.Maximized
+                    frm.CustomerId.Text = dt.Rows(i)("CustomerId")
+                    frm.CustomerId_LostFocus(Nothing, Nothing)
+                    frm.Flag = dt.Rows(i)("Flag")
+                    frm.txtID.Text = dt.Rows(i)("InvoiceNo")
+                    frm.txtID_LostFocus(Nothing, Nothing)
+                End If
+                bm.ExecuteNonQuery("update Employees set ExportsLastLine=" & dt.Rows(i)("Line") & " where Id=" & Md.UserName)
             Next
         End Sub
 

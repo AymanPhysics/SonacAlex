@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             d:DesignHeight="591" d:DesignWidth="1102.902" 
+             d:DesignHeight="612.267" d:DesignWidth="1371.539" 
              mc:Ignorable="d" xmlns:my1="clr-namespace:WpfApplication1">
     <Grid Background="{DynamicResource Bg}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0">
         <Grid VerticalAlignment="Stretch" Margin="11,11,11,86">
@@ -13,7 +13,7 @@
                     <GradientStop Color="#FF6DD9FF" Offset="1" />
                 </LinearGradientBrush>
             </Grid.Background>
-            <TextBox Height="28" Margin="146,-4,0,470" Name="txtID" Width="78" MaxLength="10" TabIndex="0" AutoWordSelection="True" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBox Height="28" Margin="146,6,0,0" Name="txtID" Width="78" MaxLength="10" TabIndex="0" AutoWordSelection="True" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -21,7 +21,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox Height="28" Margin="146,24,0,442" Name="ArName" Width="398" MaxLength="100" TabIndex="1" AutoWordSelection="True" HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="RightToLeft">
+            <TextBox Height="28" Margin="146,34,0,0" Name="ArName" Width="398" MaxLength="100" TabIndex="1" AutoWordSelection="True" VerticalAlignment="Top" FlowDirection="RightToLeft">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -29,10 +29,10 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label Content="Id" Height="28" HorizontalContentAlignment="Center" Margin="12,-4,0,470" Name="lblId" UseLayoutRounding="True" Width="124" BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-            <Label Content="Aribic Name" Height="28" HorizontalContentAlignment="Center" Margin="12,24,0,442" Name="lblArName" UseLayoutRounding="True" Width="124" BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-            <Label Content="Address" Height="28" HorizontalContentAlignment="Center" Margin="12,84,0,382" Name="lblAddress" UseLayoutRounding="True" Width="124"  BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,84,0,382" MaxLength="1000" Name="Address" TabIndex="3" Width="398" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label Content="Id" Height="28" HorizontalContentAlignment="Center" Margin="12,6,0,0" Name="lblId" UseLayoutRounding="True" Width="124" BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+            <Label Content="Aribic Name" Height="28" HorizontalContentAlignment="Center" Margin="12,34,0,0" Name="lblArName" UseLayoutRounding="True" Width="124" BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+            <Label Content="Address" Height="28" HorizontalContentAlignment="Center" Margin="12,94,0,0" Name="lblAddress" UseLayoutRounding="True" Width="124"  BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,94,0,0" MaxLength="1000" Name="Address" TabIndex="3" Width="398" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -40,8 +40,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label Content="Mobile" Height="28" HorizontalContentAlignment="Center" Margin="294,112,0,354" Name="lblMobile" UseLayoutRounding="True" Width="100"  BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-            <TextBox AutoWordSelection="True" Height="28" Margin="401,112,0,354" MaxLength="100" Name="Mobile" TabIndex="5" Width="143" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label Content="Mobile" Height="28" HorizontalContentAlignment="Center" Margin="294,122,0,0" Name="lblMobile" UseLayoutRounding="True" Width="100"  BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+            <TextBox AutoWordSelection="True" Height="28" Margin="401,122,0,0" MaxLength="100" Name="Mobile" TabIndex="5" Width="143" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -49,9 +49,9 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Image Height="144" Name="Image1" Stretch="Fill" Width="163" HorizontalAlignment="Left" VerticalAlignment="Center" Source="/SonacAlex;component/Images/no.photo.gif" Margin="556,61,0,278" />
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Notes" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,256,0,210" Name="lblNotes" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,256,0,210" MaxLength="1000" Name="Notes" TabIndex="11" Width="398" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Image Height="144" Name="Image1" Stretch="Fill" Width="163" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/SonacAlex;component/Images/no.photo.gif" Margin="556,71,0,0" />
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Notes" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,266,0,0" Name="lblNotes" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,266,0,0" MaxLength="1000" Name="Notes" TabIndex="11" Width="398" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -59,8 +59,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Tel" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,112,0,354" Name="lblTel" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,112,0,354" MaxLength="1000" Name="HomePhone" TabIndex="4" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Tel" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,122,0,0" Name="lblTel" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,122,0,0" MaxLength="1000" Name="HomePhone" TabIndex="4" Width="144" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -68,8 +68,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="E-mail" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,228,0,238" Name="lblEmail" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,228,0,238" MaxLength="1000" Name="Email" TabIndex="10" Width="398" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="E-mail" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,238,0,0" Name="lblEmail" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,238,0,0" MaxLength="1000" Name="Email" TabIndex="10" Width="398" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -77,12 +77,12 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Birth Date" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,373,0,93" Name="lblDateOfBirth" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <DatePicker Height="28" Margin="146,375,0,91" Name="DateOfBirth" Width="130" FirstDayOfWeek="Saturday" HorizontalAlignment="Left" VerticalAlignment="Center" TabIndex="12" />
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Hiring Date" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,403,0,63" Name="lblHiringDate" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <DatePicker Height="28" Name="HiringDate" Width="130" FirstDayOfWeek="Saturday" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="146,403,0,63" TabIndex="16" />
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="National ID" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,142,0,324" Name="lblNationalID" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,142,0,324" MaxLength="1000" Name="NationalId" TabIndex="6" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Birth Date" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,383,0,0" Name="lblDateOfBirth" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <DatePicker Height="28" Margin="146,385,0,0" Name="DateOfBirth" Width="130" FirstDayOfWeek="Saturday" VerticalAlignment="Top" TabIndex="12" />
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Hiring Date" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,413,0,0" Name="lblHiringDate" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <DatePicker Height="28" Name="HiringDate" Width="130" FirstDayOfWeek="Saturday" VerticalAlignment="Top" Margin="146,413,0,0" TabIndex="16" />
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="National ID" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,152,0,0" Name="lblNationalID" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,152,0,0" MaxLength="1000" Name="NationalId" TabIndex="6" Width="144" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -90,7 +90,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,54,0,412" MaxLength="100" Name="EnName" TabIndex="2" Width="398" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,64,0,0" MaxLength="100" Name="EnName" TabIndex="2" Width="398" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -98,9 +98,9 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="English Name" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,54,0,412" Name="lblEnName" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Password" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="294,142,0,324" Name="lblPassword" UseLayoutRounding="True" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <PasswordBox   Height="28" Margin="401,142,0,324" MaxLength="1000" Name="Password" TabIndex="7" Width="143" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="English Name" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,64,0,0" Name="lblEnName" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Password" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="294,152,0,0" Name="lblPassword" UseLayoutRounding="True" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <PasswordBox   Height="28" Margin="401,152,0,0" MaxLength="1000" Name="Password" TabIndex="7" Width="143" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <PasswordBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -108,7 +108,7 @@
                     </LinearGradientBrush>
                 </PasswordBox.Background>
             </PasswordBox>
-            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,171,0,295" MaxLength="100" Name="LevelName" TabIndex="1" Width="316" HorizontalAlignment="Left" VerticalAlignment="Center" >
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,181,0,0" MaxLength="100" Name="LevelName" TabIndex="1" Width="316" VerticalAlignment="Top" >
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -116,8 +116,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Security Level" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,171,0,295" Name="lblLevelId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,171,0,295" MaxLength="10" Name="LevelId" TabIndex="8" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center" >
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Security Level" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,181,0,0" Name="lblLevelId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,181,0,0" MaxLength="10" Name="LevelId" TabIndex="8" Width="78" VerticalAlignment="Top" >
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -125,7 +125,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,200,0,266" MaxLength="100" Name="DepartmentName" TabIndex="1" Width="316" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,210,0,0" MaxLength="100" Name="DepartmentName" TabIndex="1" Width="316" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -133,8 +133,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Department" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,200,0,266" Name="lblDepartmentId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,200,0,266" MaxLength="10" Name="DepartmentId" TabIndex="9" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Department" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,210,0,0" Name="lblDepartmentId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,210,0,0" MaxLength="10" Name="DepartmentId" TabIndex="9" Width="78" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -142,9 +142,9 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <CheckBox Content="Stopped" Height="16" HorizontalAlignment="Left" Name="Stopped" TabIndex="18" VerticalAlignment="Center" Width="101" Margin="389,403,0,75" />
-            <CheckBox Content="System User" Height="16" HorizontalAlignment="Left" Name="SystemUser" TabIndex="17" VerticalAlignment="Center" Width="101" Margin="284,403,0,75" />
-            <CheckBox Content="Doctor" Height="16" HorizontalAlignment="Left" Name="Doctor" TabIndex="13" VerticalAlignment="Center" Width="76" Margin="284,377,0,101" />
+            <CheckBox Content="Stopped" Height="16" HorizontalAlignment="Left" Name="Stopped" TabIndex="18" VerticalAlignment="Top" Width="101" Margin="389,413,0,0" />
+            <CheckBox Content="System User" Height="16" HorizontalAlignment="Left" Name="SystemUser" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="284,413,0,0" />
+            <CheckBox Content="Doctor" Height="16" HorizontalAlignment="Left" Name="Doctor" TabIndex="13" VerticalAlignment="Top" Width="76" Margin="284,387,0,0" />
             <CheckBox Content="Saturday" Height="16" HorizontalAlignment="Left" Name="Saturday" TabIndex="26" VerticalAlignment="Center" Width="120" Margin="817,43,0,424" />
             <CheckBox Content="Sunday" Height="16" HorizontalAlignment="Left" Name="Sunday" TabIndex="27" VerticalAlignment="Center" Width="120" Margin="817,71,0,396" />
             <CheckBox Content="Monday" Height="16" HorizontalAlignment="Left" Name="Monday" TabIndex="28" VerticalAlignment="Center" Width="120" Margin="817,97,0,370" />
@@ -152,11 +152,11 @@
             <CheckBox Content="Wednesday" Height="16" HorizontalAlignment="Left" Name="Wednesday" TabIndex="30" VerticalAlignment="Center" Width="120" Margin="817,157,0,310" />
             <CheckBox Content="Thursday" Height="16" HorizontalAlignment="Left" Name="Thursday" TabIndex="31" VerticalAlignment="Center" Width="120" Margin="817,187,0,280" />
             <CheckBox Content="Friday" Height="16" HorizontalAlignment="Left" Name="Friday" TabIndex="32" VerticalAlignment="Center" Width="120" Margin="817,213,0,254" />
-            <CheckBox Content="Nurse" Height="16" HorizontalAlignment="Left" Name="Nurse" TabIndex="14" VerticalAlignment="Center" Width="76" Margin="360,373,0,105" />
+            <CheckBox Content="Nurse" Height="16" HorizontalAlignment="Left" Name="Nurse" TabIndex="14" VerticalAlignment="Top" Width="76" Margin="360,383,0,0" />
             <Button Content="Change" HorizontalAlignment="Left"  Name="btnSetImage" TabIndex="35" VerticalAlignment="Center" Width="82" Margin="723,91,0,354" Background="{DynamicResource BgSave}" Height="38" IsTabStop="False" RenderTransformOrigin="1.102,0.618"/>
             <Button Content="Cancel" HorizontalAlignment="Left"  Name="btnSetNoImage" TabIndex="35" VerticalAlignment="Center" Width="82" Margin="723,135,0,310" Background="{DynamicResource BgDelete}" Height="38" IsTabStop="False"/>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Res. Duration" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="12,433,0,33" Name="lblDuration" UseLayoutRounding="True" VerticalAlignment="Center" Width="124" />
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Left" Margin="146,433,0,33" MaxLength="100" Name="Duration" TabIndex="22" VerticalAlignment="Center" Width="72">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Res. Duration" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="12,443,0,0" Name="lblDuration" UseLayoutRounding="True" VerticalAlignment="Top" Width="124" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,443,0,0" MaxLength="100" Name="Duration" TabIndex="22" VerticalAlignment="Top" Width="72">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -164,9 +164,9 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Minutes" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="223,433,0,33" Name="lblMinutes" UseLayoutRounding="True" VerticalAlignment="Center" Width="53" />
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Max Res. count" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="12,466,0,0" Name="lblCnt" UseLayoutRounding="True" VerticalAlignment="Center" Width="124" />
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Left" Margin="146,466,0,0" MaxLength="100" Name="Cnt" TabIndex="23" VerticalAlignment="Center" Width="72">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Minutes" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="223,443,0,0" Name="lblMinutes" UseLayoutRounding="True" VerticalAlignment="Top" Width="53" />
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Max Res. count" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="12,476,0,0" Name="lblCnt" UseLayoutRounding="True" VerticalAlignment="Top" Width="124" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,476,0,0" MaxLength="100" Name="Cnt" TabIndex="23" VerticalAlignment="Top" Width="72">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -648,9 +648,9 @@
                 </TabItem>
 
             </TabControl>
-            <CheckBox Content="Manager" Height="16" HorizontalAlignment="Left" x:Name="Manager" TabIndex="19" VerticalAlignment="Center" Width="101" Margin="495,403,0,75" />
-            <CheckBox Content="Receptionist" Height="16" HorizontalAlignment="Left" x:Name="Receptionist" TabIndex="15" VerticalAlignment="Center" Width="76" Margin="426,377,0,101" />
-            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,286,0,180" MaxLength="100" x:Name="StoreName" TabIndex="1" Width="316" HorizontalAlignment="Left" VerticalAlignment="Center" >
+            <CheckBox Content="Manager" Height="16" HorizontalAlignment="Left" x:Name="Manager" TabIndex="19" VerticalAlignment="Top" Width="101" Margin="495,413,0,0" />
+            <CheckBox Content="Receptionist" Height="16" HorizontalAlignment="Left" x:Name="Receptionist" TabIndex="15" VerticalAlignment="Top" Width="76" Margin="426,387,0,0" />
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,296,0,0" MaxLength="100" x:Name="StoreName" TabIndex="1" Width="316" VerticalAlignment="Top" >
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -658,8 +658,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Store" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,286,0,180" x:Name="lblStoreId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,286,0,180" MaxLength="10" x:Name="StoreId" TabIndex="12" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center" >
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Store" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,296,0,0" x:Name="lblStoreId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,296,0,0" MaxLength="10" x:Name="StoreId" TabIndex="12" Width="78" VerticalAlignment="Top" >
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -667,7 +667,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,314,0,152" MaxLength="100" x:Name="SaveName" TabIndex="1" Width="316" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,324,0,0" MaxLength="100" x:Name="SaveName" TabIndex="1" Width="316" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -675,8 +675,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Save" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,314,0,152" x:Name="lblSaveId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,314,0,152" MaxLength="10" x:Name="SaveId" TabIndex="13" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Save" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,324,0,0" x:Name="lblSaveId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,324,0,0" MaxLength="10" x:Name="SaveId" TabIndex="13" Width="78" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -781,7 +781,7 @@
                 </TextBox.Background>
             </TextBox>
             <CheckBox Content="مندوب" Height="16" HorizontalAlignment="Left" x:Name="Waiter" TabIndex="13" VerticalAlignment="Center" Width="120" Margin="284,375,0,101" Visibility="Hidden"/>
-            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,344,0,122" MaxLength="100" x:Name="BankName" TabIndex="1" Width="316" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="228,354,0,0" MaxLength="100" x:Name="BankName" TabIndex="1" Width="316" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -789,8 +789,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Bank" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,344,0,122" x:Name="lblBankId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox AutoWordSelection="True" Height="28" Margin="146,344,0,122" MaxLength="10" x:Name="BankId" TabIndex="14" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Bank" Foreground="#FF078200" Height="28" HorizontalContentAlignment="Center" Margin="12,354,0,0" x:Name="lblBankId" UseLayoutRounding="True" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="146,354,0,0" MaxLength="10" x:Name="BankId" TabIndex="14" Width="78" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -798,14 +798,13 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Button Content="..." HorizontalAlignment="Left"  x:Name="btnStorePermissions" TabIndex="35" VerticalAlignment="Center" Width="40" Margin="549,282,0,176" Background="{DynamicResource BgSave}" Height="36" IsTabStop="False" />
-            <CheckBox Content="EditPrices" Height="16" HorizontalAlignment="Left" x:Name="EditPrices" TabIndex="15" VerticalAlignment="Center" Width="76" Margin="513,377,0,101" />
-            <WindowsFormsHost Margin="284,419,0,-9" x:Name="WFH" Background="{x:Null}" TabIndex="10" HorizontalAlignment="Left" Width="305" Height="84" VerticalAlignment="Center"/>
-            <CheckBox Content="Sales Price" Height="16" HorizontalAlignment="Left" x:Name="SalesPrice" TabIndex="17" VerticalAlignment="Center" Width="101" Margin="284,445,0,33" />
-            <CheckBox Content="Purchases Price" Height="16" HorizontalAlignment="Left" x:Name="PurchasesPrice" TabIndex="17" VerticalAlignment="Center" Width="101" Margin="390,445,0,33" />
-            <CheckBox Content="Import Price" Height="16" HorizontalAlignment="Left" x:Name="ImportPrice" TabIndex="17" VerticalAlignment="Center" Width="101" Margin="495,445,0,33" />
-            <Label Content="BADGENUMBER" Height="28" HorizontalContentAlignment="Center" Margin="294,-4,0,470" x:Name="lblBADGENUMBER" UseLayoutRounding="True" Width="100"  BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBox AutoWordSelection="True" Height="28" Margin="401,-4,0,470" MaxLength="100" x:Name="BADGENUMBER" TabIndex="5" Width="143" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button Content="..."  x:Name="btnStorePermissions" TabIndex="35" VerticalAlignment="Top" Width="40" Margin="549,292,0,0" Background="{DynamicResource BgSave}" Height="36" IsTabStop="False" />
+            <CheckBox Content="EditPrices" Height="16" HorizontalAlignment="Left" x:Name="EditPrices" TabIndex="15" VerticalAlignment="Top" Width="76" Margin="513,387,0,0" />
+            <CheckBox Content="Sales Price" Height="16" HorizontalAlignment="Left" x:Name="SalesPrice" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="284,455,0,0" />
+            <CheckBox Content="Purchases Price" Height="16" HorizontalAlignment="Left" x:Name="PurchasesPrice" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="390,455,0,0" />
+            <CheckBox Content="Import Price" Height="16" HorizontalAlignment="Left" x:Name="ImportPrice" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="495,455,0,0" />
+            <Label Content="BADGENUMBER" Height="28" HorizontalContentAlignment="Center" Margin="294,6,0,0" x:Name="lblBADGENUMBER" UseLayoutRounding="True" Width="100"  BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox AutoWordSelection="True" Height="28" Margin="401,6,0,0" MaxLength="100" x:Name="BADGENUMBER" TabIndex="5" Width="143" VerticalAlignment="Top">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -813,9 +812,10 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <CheckBox Content="استخراج التقارير" Height="16" HorizontalAlignment="Left" x:Name="UserCanRptExportButton" TabIndex="17" VerticalAlignment="Center" Width="101" Margin="284,468,0,10" />
-            <CheckBox Content="استقبال المردودات" Height="16" HorizontalAlignment="Left" x:Name="UserCanRecieve1" TabIndex="17" VerticalAlignment="Center" Width="101" Margin="389,468,0,10" />
-            <CheckBox Content="استقبال التحويلات" Height="16" HorizontalAlignment="Left" x:Name="UserCanRecieve2" TabIndex="17" VerticalAlignment="Center" Width="101" Margin="495,468,0,10" />
+            <CheckBox Content="استخراج التقارير" Height="16" HorizontalAlignment="Left" x:Name="UserCanRptExportButton" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="284,494,0,0" />
+            <CheckBox Content="استقبال المردودات" Height="16" HorizontalAlignment="Left" x:Name="UserCanRecieve1" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="389,478,0,0" />
+            <CheckBox Content="استقبال التحويلات" Height="16" HorizontalAlignment="Left" x:Name="UserCanRecieve2" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="495,478,0,0" />
+            <CheckBox Content="Exports" Height="16" HorizontalAlignment="Left" x:Name="IsExports" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="284,435,0,0"   />
         </Grid>
         <Button Content="First" HorizontalAlignment="Center"  Margin="385,0,636,3" Name="btnFirst" TabIndex="36" VerticalAlignment="Bottom" Width="82" Background="{DynamicResource BgSave}" IsTabStop="False" />
         <Button Content="Previous" HorizontalAlignment="Center"  Margin="473,0,548,3" Name="btnPrevios" TabIndex="37" VerticalAlignment="Bottom" Width="82" Background="{DynamicResource BgSave}" IsTabStop="False" />

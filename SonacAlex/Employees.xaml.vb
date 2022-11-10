@@ -8,7 +8,6 @@ Public Class Employees
     Dim bm As New BasicMethods
 
     Public Flag As Integer = 0
-    WithEvents G As New MyGrid
 
 
     Private Sub BasicForm_Loaded(ByVal sender As Object, ByVal e As System.Windows.RoutedEventArgs) Handles Me.Loaded
@@ -36,13 +35,10 @@ Public Class Employees
         Waiter.Visibility = Windows.Visibility.Visible
 
 
-        bm.Fields = New String() {SubId, "Name", "Address", "DateOfBirth", "DepartmentId", "Notes", "Nurse", "Receptionist", "Manager", "SystemUser", "NationalId", "HomePhone", "Mobile", "Email", "Password", "EnName", "LevelId", "Doctor", "Stopped", "HiringDate", "Duration", "Cnt", "hh", "hh2", "hh3", "hh4", "hh5", "hh6", "hh7", "mm", "mm2", "mm3", "mm4", "mm5", "mm6", "mm7", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "IsSalary", "IsFreelancer", "LateAllowance", "Allowance", "SpAllowance", "FromHH", "ToHH", "FromMM", "ToMM", "Salary", "SalaryOnly", "ShiftsOnly", "SalaryOrShifts", "ShiftCount", "ShiftValue", "Tax", "Bonus", "Insurance", "Annual", "NoofDaysOff", "NoofMonthlyExecuses", "HolidayWorkValue", "DelayValue", "OvertimeValue", "IsFixedHours", "TotalHours", "TotalMinutes", "HasAttendance", "MainJobId", "SubJobId", "TaxAccNo", "AccNo", "DefaultStore", "DefaultSave", "Waiter", "DefaultBank", "FromHHTemp", "FromMMTemp", "ToHHTemp", "ToMMTemp", "TotalHoursTemp", "TotalMinutesTemp", "FromDate", "ToDate", "EditPrices", "DegreeId", "GraduationYear", "NoLicenseToPractice", "SalesPrice", "PurchasesPrice", "ImportPrice", "BADGENUMBER", "UserCanRptExportButton", "UserCanRecieve1", "UserCanRecieve2"}
-        bm.control = New Control() {txtID, ArName, Address, DateOfBirth, DepartmentId, Notes, Nurse, Receptionist, Manager, SystemUser, NationalId, HomePhone, Mobile, Email, Password, EnName, LevelId, Doctor, Stopped, HiringDate, Duration, Cnt, hh, hh2, hh3, hh4, hh5, hh6, hh7, mm, mm2, mm3, mm4, mm5, mm6, mm7, Saturday, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, IsSalary, IsFreelancer, LateAllowance, Allowance, SpAllowance, FromHH, ToHH, FromMM, ToMM, Salary, SalaryOnly, ShiftsOnly, SalaryOrShifts, ShiftCount, ShiftValue, Tax, Bonus, Insurance, Annual, NoofDaysOff, NoofMonthlyExecuses, HolidayWorkValue, DelayValue, OvertimeValue, IsFixedHours, TotalHours, TotalMinutes, HasAttendance, MainJobId, SubJobId, TaxAccNo, AccNo, StoreId, SaveId, Waiter, BankId, FromHHTemp, FromMMTemp, ToHHTemp, ToMMTemp, TotalHoursTemp, TotalMinutesTemp, FromDate, ToDate, EditPrices, DegreeId, GraduationYear, NoLicenseToPractice, SalesPrice, PurchasesPrice, ImportPrice, BADGENUMBER, UserCanRptExportButton, UserCanRecieve1, UserCanRecieve2}
+        bm.Fields = New String() {SubId, "Name", "Address", "DateOfBirth", "DepartmentId", "Notes", "Nurse", "Receptionist", "Manager", "SystemUser", "NationalId", "HomePhone", "Mobile", "Email", "Password", "EnName", "LevelId", "Doctor", "Stopped", "HiringDate", "Duration", "Cnt", "hh", "hh2", "hh3", "hh4", "hh5", "hh6", "hh7", "mm", "mm2", "mm3", "mm4", "mm5", "mm6", "mm7", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "IsSalary", "IsFreelancer", "LateAllowance", "Allowance", "SpAllowance", "FromHH", "ToHH", "FromMM", "ToMM", "Salary", "SalaryOnly", "ShiftsOnly", "SalaryOrShifts", "ShiftCount", "ShiftValue", "Tax", "Bonus", "Insurance", "Annual", "NoofDaysOff", "NoofMonthlyExecuses", "HolidayWorkValue", "DelayValue", "OvertimeValue", "IsFixedHours", "TotalHours", "TotalMinutes", "HasAttendance", "MainJobId", "SubJobId", "TaxAccNo", "AccNo", "DefaultStore", "DefaultSave", "Waiter", "DefaultBank", "FromHHTemp", "FromMMTemp", "ToHHTemp", "ToMMTemp", "TotalHoursTemp", "TotalMinutesTemp", "FromDate", "ToDate", "EditPrices", "DegreeId", "GraduationYear", "NoLicenseToPractice", "SalesPrice", "PurchasesPrice", "ImportPrice", "BADGENUMBER", "UserCanRptExportButton", "UserCanRecieve1", "UserCanRecieve2", "IsExports"}
+        bm.control = New Control() {txtID, ArName, Address, DateOfBirth, DepartmentId, Notes, Nurse, Receptionist, Manager, SystemUser, NationalId, HomePhone, Mobile, Email, Password, EnName, LevelId, Doctor, Stopped, HiringDate, Duration, Cnt, hh, hh2, hh3, hh4, hh5, hh6, hh7, mm, mm2, mm3, mm4, mm5, mm6, mm7, Saturday, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, IsSalary, IsFreelancer, LateAllowance, Allowance, SpAllowance, FromHH, ToHH, FromMM, ToMM, Salary, SalaryOnly, ShiftsOnly, SalaryOrShifts, ShiftCount, ShiftValue, Tax, Bonus, Insurance, Annual, NoofDaysOff, NoofMonthlyExecuses, HolidayWorkValue, DelayValue, OvertimeValue, IsFixedHours, TotalHours, TotalMinutes, HasAttendance, MainJobId, SubJobId, TaxAccNo, AccNo, StoreId, SaveId, Waiter, BankId, FromHHTemp, FromMMTemp, ToHHTemp, ToMMTemp, TotalHoursTemp, TotalMinutesTemp, FromDate, ToDate, EditPrices, DegreeId, GraduationYear, NoLicenseToPractice, SalesPrice, PurchasesPrice, ImportPrice, BADGENUMBER, UserCanRptExportButton, UserCanRecieve1, UserCanRecieve2, IsExports}
         bm.KeyFields = New String() {SubId}
         bm.Table_Name = TableName
-
-
-        LoadWFH()
 
 
         SalesPrice.Visibility = Windows.Visibility.Hidden
@@ -60,28 +56,6 @@ Public Class Employees
     End Sub
 
 
-    Structure GC
-        Shared Id As String = "Id"
-        Shared Name As String = "Name"
-        Shared Price As String = "Price"
-    End Structure
-
-    Private Sub LoadWFH()
-        WFH.Child = G
-
-        G.Columns.Clear()
-        G.ForeColor = System.Drawing.Color.DarkBlue
-        G.Columns.Add(GC.Id, "الكود")
-        G.Columns.Add(GC.Name, "الاسم")
-        G.Columns.Add(GC.Price, "القيمة")
-
-        G.Columns(GC.Name).FillWeight = 300
-        G.Columns(GC.Id).ReadOnly = True
-        G.Columns(GC.Name).ReadOnly = True
-        G.AllowUserToAddRows = False
-        G.AllowUserToDeleteRows = False
-    End Sub
-
 
     Private Sub btnLast_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLast.Click
         bm.FirstLast(New String() {SubId}, "Max", dt)
@@ -94,7 +68,7 @@ Public Class Employees
         loplop = True
         bm.FillControls(Me)
         bm.GetImage(TableName, New String() {SubId}, New String() {txtID.Text.Trim}, "Image", Image1)
-        GetGrid()
+
 
         LevelId_LostFocus(Nothing, Nothing)
         DepartmentId_LostFocus(Nothing, Nothing)
@@ -129,7 +103,7 @@ Public Class Employees
         ShiftValue.Text = Val(ShiftValue.Text)
         Tax.Text = Val(Tax.Text)
 
-        G.EndEdit()
+
         If Tax.Visibility = Windows.Visibility.Visible AndAlso Val(Tax.Text) <> 0 AndAlso Val(TaxAccNo.Text) = 0 Then
             bm.ShowMSG("برجاء تحديد حساب الضريبة")
             TaxAccNo.Focus()
@@ -170,8 +144,6 @@ Public Class Employees
 
         bm.DefineValues()
         If Not bm.Save(New String() {SubId}, New String() {txtID.Text.Trim}) Then Return
-
-        If Not bm.SaveGrid(G, TableNameDetailed, New String() {"EmpId"}, New String() {txtID.Text}, New String() {"VisitingTypeId", "Price"}, New String() {GC.Id, GC.Price}, New VariantType() {VariantType.Integer, VariantType.Decimal}, New String() {GC.Id}) Then Return
 
         bm.SaveImage(TableName, New String() {SubId}, New String() {txtID.Text.Trim}, "Image", Image1)
         If Not DontClear Then btnNew_Click(sender, e)
@@ -216,8 +188,6 @@ Public Class Employees
     Private Sub DegreeId_LostFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles DegreeId.LostFocus
         bm.LostFocus(DegreeId, DegreeName, "select Name from Degrees where Id=" & DegreeId.Text.Trim())
 
-        If loplop Then Return
-        GetGridDegree()
     End Sub
 
     Sub ClearControls()
@@ -228,7 +198,6 @@ Public Class Employees
         ImportPrice.IsChecked = True
 
         bm.SetNoImage(Image1, True)
-        GetGrid()
 
         Password.Password = 123
         IsSalary.IsChecked = True
@@ -417,8 +386,6 @@ Public Class Employees
         'Thursday.Visibility = Visibility.Visible
         'Friday.Visibility = Visibility.Visible
 
-        WFH.Visibility = Visibility.Visible
-
         'Saturday.IsChecked = True
         'Sunday.IsChecked = True
         'Monday.IsChecked = True
@@ -482,8 +449,6 @@ Public Class Employees
         'Wednesday.Visibility = Visibility.Hidden
         'Thursday.Visibility = Visibility.Hidden
         'Friday.Visibility = Visibility.Hidden
-
-        WFH.Visibility = Visibility.Hidden
 
         'Saturday.IsChecked = False
         'Sunday.IsChecked = False
@@ -948,28 +913,6 @@ Public Class Employees
         bm.ShowHelpPermissions(MainLinkFile.Text, Val(txtID.Text), "select cast(T.Id as varchar(100)) Id,T.Name,cast((case when E.EmpId is null then 0 else 1 end) as bit) Permission from EmpPermissions E right join AllSub T on(E.LinkFile=T.LinkFile and E.Id=T.Id and(EmpId=" & Val(txtID.Text) & " or EmpId is null)) where T.LinkFile=" & MainLinkFile.SelectedValue, "EmpPermissions", MainLinkFile.SelectedValue, New String() {"LinkFile"}, New String() {MainLinkFile.SelectedValue})
     End Sub
 
-    Private Sub GetGrid()
-        Dim dt As DataTable = bm.ExecuteAdapter("select T.Id,T.Name,isnull(E.Price,0)Price from VisitingTypes T left join VisitingTypeEmployees E on(T.Id=E.VisitingTypeId and (E.EmpId=" & Val(txtID.Text) & " or E.EmpId is null))")
-        G.Rows.Clear()
-        For i As Integer = 0 To dt.Rows.Count - 1
-            G.Rows.Add()
-            G.Rows(i).Cells(GC.Id).Value = dt.Rows(i)("Id").ToString
-            G.Rows(i).Cells(GC.Name).Value = dt.Rows(i)("Name").ToString
-            G.Rows(i).Cells(GC.Price).Value = dt.Rows(i)("Price").ToString
-        Next
-        G.RefreshEdit()
-    End Sub
 
-    Private Sub GetGridDegree()
-        Dim dt As DataTable = bm.ExecuteAdapter("select T.Id,T.Name,isnull(E.Price,0)Price from VisitingTypes T left join VisitingTypeDegrees E on(T.Id=E.VisitingTypeId) where (E.DegreeId=" & Val(DegreeId.Text) & " or E.DegreeId is null)")
-        G.Rows.Clear()
-        For i As Integer = 0 To dt.Rows.Count - 1
-            G.Rows.Add()
-            G.Rows(i).Cells(GC.Id).Value = dt.Rows(i)("Id").ToString
-            G.Rows(i).Cells(GC.Name).Value = dt.Rows(i)("Name").ToString
-            G.Rows(i).Cells(GC.Price).Value = dt.Rows(i)("Price").ToString
-        Next
-        G.RefreshEdit()
-    End Sub
 
 End Class

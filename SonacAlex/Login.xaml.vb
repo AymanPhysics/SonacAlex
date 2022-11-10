@@ -50,6 +50,7 @@ Public Class Login
         Md.UserCanRecieve1 = IIf(dt.Rows(0)("UserCanRecieve1").ToString() = "1", True, False)
         Md.UserCanRecieve2 = IIf(dt.Rows(0)("UserCanRecieve2").ToString() = "1", True, False)
         Md.IsMyVeryFruits = IIf(dt.Rows(0)("IsMyVeryFruits").ToString() = "1", True, False)
+        Md.IsExports = IIf(dt.Rows(0)("IsExports").ToString() = "1", True, False)
 
         If Md.Manager Then
             'bm.BackupAndSendEMail()
