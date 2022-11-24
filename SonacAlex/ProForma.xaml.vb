@@ -40,7 +40,7 @@ Public Class ProForma
         bm.KeyFields = New String() {MainId, SubId, SubId2}
         bm.Table_Name = TableName
 
-        If Flag <> MyFlag.ProForma Then
+        If Flag <> MyFlag.ProForma AndAlso Flag <> MyFlag.RealInvoice Then
             WFH2.Visibility = Visibility.Collapsed
             WFH.Margin = New Thickness(10, WFH.Margin.Top, 10, WFH.Margin.Bottom)
         End If

@@ -163,14 +163,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SonacAlex.exe" size="19282944">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SonacAlex.exe" size="19291648">
       <assemblyIdentity name="SonacAlex" version="3.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lpKF+ERz9qVAFZ9Pu+Tu7mjXPKS4wjQKSa+tw+6OTgQ=</dsig:DigestValue>
+        <dsig:DigestValue>mj3lPIyy60JtzMlInHmurLyoW8jnWnudI9HCBE0yJZU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

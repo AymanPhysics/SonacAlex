@@ -655,6 +655,11 @@ Partial Public Class MainPage
                                                              sender.Tag = New MyPage With {.Content = frm}
                                                          End Sub
 
+        AddHandler LoadRadio(245, G, "Invoice - Payments").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                                        frm = New ProForma With {.Flag = MyFlag.RealInvoice, .IsPayments = True}
+                                                                        sender.Tag = New MyPage With {.Content = frm}
+                                                                    End Sub
+
 
 
         'LoadLabel(240, G, "")
@@ -698,7 +703,7 @@ Partial Public Class MainPage
         '                                                              sender.Tag = New MyPage With {.Content = frm}
         '                                                          End Sub
 
-        '244
+        '245
     End Sub
 
     Private Sub LoadGStores(CurrentTab As Integer)

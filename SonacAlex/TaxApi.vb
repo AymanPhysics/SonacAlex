@@ -347,7 +347,7 @@ Public Class TaxApi
             ""dateTimeIssued"": """ & bm.ToStrDateTimeFormated(SalesMasterDT.Rows(0)("DayDate")).Replace(" ", "T") & "Z"",
             ""taxpayerActivityCode"": """ & TaxApi_issuerDT.Rows(0)("taxpayerActivityCode") & """,
             ""internalID"": """ & SalesMasterDT.Rows(0)("DocNo") & """,
-            ""purchaseOrderReference"": """",
+            ""purchaseOrderReference"": """ & SalesMasterDT.Rows(0)("purchaseOrderReference") & """,
             ""purchaseOrderDescription"": """",
             ""salesOrderReference"": """",
             ""salesOrderDescription"": """",
