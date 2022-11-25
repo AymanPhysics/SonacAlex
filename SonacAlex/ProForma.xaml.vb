@@ -29,7 +29,7 @@ Public Class ProForma
         bm.TestSecurity(Me, {btnSave}, {btnDelete}, {btnFirst, btnNext, btnPrevios, btnLast}, {})
         bm.FillCombo("select Id,Name from Currencies order by Id", CurrencyId)
         bm.FillCombo("ShippedPers", ShippedPerId, "")
-        bm.FillCombo("Banks", BankId, "")
+        bm.FillCombo("Banks2", BankId, "")
         bm.FillCombo("Ports", FromPortId, "")
         bm.FillCombo("Ports2", ToPortId, "")
 
@@ -40,10 +40,10 @@ Public Class ProForma
         bm.KeyFields = New String() {MainId, SubId, SubId2}
         bm.Table_Name = TableName
 
-        If Flag <> MyFlag.ProForma AndAlso Flag <> MyFlag.RealInvoice Then
-            WFH2.Visibility = Visibility.Collapsed
-            WFH.Margin = New Thickness(10, WFH.Margin.Top, 10, WFH.Margin.Bottom)
-        End If
+        'If Flag <> MyFlag.ProForma AndAlso Flag <> MyFlag.RealInvoice Then
+        '    WFH2.Visibility = Visibility.Collapsed
+        '    WFH.Margin = New Thickness(10, WFH.Margin.Top, 10, WFH.Margin.Bottom)
+        'End If
 
         LoadWFH()
         LoadWFH2()
@@ -764,5 +764,14 @@ Public Class ProForma
         frm.CustomerId_LostFocus(Nothing, Nothing)
         frm.FillControls(Flag, Val(txtID.Text))
 
+    End Sub
+
+    Private Sub btnPrintBalance_Click(sender As Object, e As RoutedEventArgs) Handles btnPrintBalance.Click
+        Dim rpt As New ReportViewer
+        rpt.Header = sender.Content
+        rpt.paraname = New String() {"@CustomerId", "CustomerName", "Header"}
+        rpt.paravalue = New String() {Val(CustomerId.Text), CustomerName.Text, sender.Content}
+        rpt.Rpt = "AccountMotionExports.rpt"
+        rpt.Show()
     End Sub
 End Class

@@ -191,6 +191,7 @@
                 </TextBox.Background>
             </TextBox>
             <WindowsFormsHost Margin="0,242,13,115" x:Name="WFH2" Background="{x:Null}" TabIndex="10" HorizontalAlignment="Right" Width="391"/>
+            <Button  Content="Account statement"  Margin="598,1,0,0" x:Name="btnPrintBalance" TabIndex="20" VerticalAlignment="Top" Width="190" Background="{DynamicResource BgSave}" IsTabStop="False"/>
         </Grid>
         <Button  Content="أول"  Margin="229,0,0,12" x:Name="btnFirst" TabIndex="13" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
         <Button  Content="سابق"  Margin="307,0,0,12" x:Name="btnPrevios" TabIndex="14" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />

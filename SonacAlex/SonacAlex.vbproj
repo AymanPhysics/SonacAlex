@@ -253,6 +253,9 @@
     <Compile Include="BasicForm.xaml.vb">
       <DependentUpon>BasicForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BasicForm1_4.xaml.vb">
+      <DependentUpon>BasicForm1_4.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Bills.xaml.vb">
       <DependentUpon>Bills.xaml</DependentUpon>
     </Compile>
@@ -729,6 +732,10 @@
     <Page Include="BasicForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicForm1_4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Bills.xaml">
       <Generator>MSBuild:Compile</Generator>

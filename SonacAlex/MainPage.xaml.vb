@@ -599,7 +599,7 @@ Partial Public Class MainPage
                                                              End Sub
 
         AddHandler LoadRadio(231, G, "Banks").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                           frm = New BasicForm With {.TableName = "Banks", .IsMultiLine = True}
+                                                           frm = New BasicForm1_4 With {.TableName = "Banks2"}
                                                            sender.Tag = New MyPage With {.Content = frm}
                                                        End Sub
 
@@ -645,10 +645,20 @@ Partial Public Class MainPage
                                                          sender.Tag = New MyPage With {.Content = frm}
                                                      End Sub
 
+        AddHandler LoadRadio(246, G, "Iso - Payments").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                                    frm = New ProForma With {.Flag = MyFlag.ISO, .IsPayments = True}
+                                                                    sender.Tag = New MyPage With {.Content = frm}
+                                                                End Sub
+
         AddHandler LoadRadio(238, G, "Customs Invoice").Checked, Sub(sender As Object, e As RoutedEventArgs)
                                                                      frm = New ProForma With {.Flag = MyFlag.CustomsInvoice}
                                                                      sender.Tag = New MyPage With {.Content = frm}
                                                                  End Sub
+
+        AddHandler LoadRadio(247, G, "Customs Invoice - Payments").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                                                frm = New ProForma With {.Flag = MyFlag.CustomsInvoice, .IsPayments = True}
+                                                                                sender.Tag = New MyPage With {.Content = frm}
+                                                                            End Sub
 
         AddHandler LoadRadio(239, G, "Invoice").Checked, Sub(sender As Object, e As RoutedEventArgs)
                                                              frm = New ProForma With {.Flag = MyFlag.RealInvoice}
@@ -703,7 +713,7 @@ Partial Public Class MainPage
         '                                                              sender.Tag = New MyPage With {.Content = frm}
         '                                                          End Sub
 
-        '245
+        '247
     End Sub
 
     Private Sub LoadGStores(CurrentTab As Integer)
