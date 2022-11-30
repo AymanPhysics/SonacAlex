@@ -106,6 +106,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
+            <CheckBox Content="مبيعات" Height="16" HorizontalAlignment="Left" x:Name="IsSales" TabIndex="13" VerticalAlignment="Top" Width="76" Margin="264,175,0,0" />
         </Grid>
         <Button Content="First" HorizontalAlignment="Center"  Margin="174,0,422,10" Name="btnFirst" TabIndex="6" VerticalAlignment="Bottom" Width="82" Background="{DynamicResource BgSave}" />
         <Button Content="Previous" HorizontalAlignment="Center"  Margin="262,0,334,10" Name="btnPrevios" TabIndex="7" VerticalAlignment="Bottom" Width="82" Background="{DynamicResource BgSave}" />

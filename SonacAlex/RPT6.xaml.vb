@@ -75,6 +75,8 @@ Public Class RPT6
                 rpt.Rpt = "ItemMotion23.rpt"
             Case 20
                 rpt.Rpt = "Sales4.rpt"
+            Case 21
+                rpt.Rpt = "Sales23.rpt"
         End Select
         rpt.Show()
     End Sub

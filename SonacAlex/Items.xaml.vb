@@ -63,8 +63,8 @@ Public Class Items
             UnitCount2.Visibility = Visibility.Hidden
         End If
 
-        bm.Fields = New String() {SubId, SubName, "itemCode", "EnName", "GroupId", "TypeId", "ItemUnitId", "PrintingGroupId", "StoreId", "PurchasePrice", "PurchasePriceSub", "PurchasePriceSub2", "SalesPrice", "SalesPriceSub", "SalesPriceSub2", "ItemType", "Unit", "UnitSub", "UnitSub2", "UnitCount", "UnitCount2", "Adding", "IsTables", "IsTakeAway", "IsDelivary", "Limit", "Barcode", "IsStopped", "Flag", "ImportPrice", "ImportPriceSub", "ImportPriceSub2", "IsKidneysWash", "CodeOnPackage", "IsService", "CountryId", "AllowEditSalesPrice", "SalesAccNo", "ReturnAccNo", "TaxApi_UnitTypeId", "TaxApi_UnitTypeQty", "IsExports"}
-        bm.control = New Control() {txtID, txtName, itemCode, txtEnName, GroupId, TypeId, ItemUnitId, PrintingGroupId, StoreId, PurchasePrice, PurchasePriceSub, PurchasePriceSub2, SalesPrice, SalesPriceSub, SalesPriceSub2, ItemType, Unit, UnitSub, UnitSub2, UnitCount, UnitCount2, Adding, IsTables, IsTakeAway, IsDelivary, Limit, Barcode, IsStopped, Flag, ImportPrice, ImportPriceSub, ImportPriceSub2, IsKidneysWash, CodeOnPackage, IsService, CountryId, AllowEditSalesPrice, SalesAccNo, ReturnAccNo, TaxApi_UnitTypeId, TaxApi_UnitTypeQty, IsExports}
+        bm.Fields = New String() {SubId, SubName, "itemCode", "EnName", "GroupId", "TypeId", "ItemUnitId", "PrintingGroupId", "StoreId", "PurchasePrice", "PurchasePriceSub", "PurchasePriceSub2", "SalesPrice", "SalesPriceSub", "SalesPriceSub2", "ItemType", "Unit", "UnitSub", "UnitSub2", "UnitCount", "UnitCount2", "Adding", "IsTables", "IsTakeAway", "IsDelivary", "Limit", "Barcode", "IsStopped", "Flag", "ImportPrice", "ImportPriceSub", "ImportPriceSub2", "IsKidneysWash", "CodeOnPackage", "IsService", "CountryId", "AllowEditSalesPrice", "SalesAccNo", "ReturnAccNo", "TaxApi_UnitTypeId", "TaxApi_UnitTypeQty", "IsExports", "PurchaseAccNo", "PurchaseReturnAccNo"}
+        bm.control = New Control() {txtID, txtName, itemCode, txtEnName, GroupId, TypeId, ItemUnitId, PrintingGroupId, StoreId, PurchasePrice, PurchasePriceSub, PurchasePriceSub2, SalesPrice, SalesPriceSub, SalesPriceSub2, ItemType, Unit, UnitSub, UnitSub2, UnitCount, UnitCount2, Adding, IsTables, IsTakeAway, IsDelivary, Limit, Barcode, IsStopped, Flag, ImportPrice, ImportPriceSub, ImportPriceSub2, IsKidneysWash, CodeOnPackage, IsService, CountryId, AllowEditSalesPrice, SalesAccNo, ReturnAccNo, TaxApi_UnitTypeId, TaxApi_UnitTypeQty, IsExports, PurchaseAccNo, PurchaseReturnAccNo}
         bm.KeyFields = New String() {SubId}
         bm.Table_Name = TableName
 
@@ -140,6 +140,8 @@ Public Class Items
 
         SalesAccNo_LostFocus(Nothing, Nothing)
         ReturnAccNo_LostFocus(Nothing, Nothing)
+        PurchaseAccNo_LostFocus(Nothing, Nothing)
+        PurchaseReturnAccNo_LostFocus(Nothing, Nothing)
 
         GroupId_LostFocus(Nothing, Nothing)
         TypeId_LostFocus(Nothing, Nothing)
@@ -232,6 +234,8 @@ Public Class Items
 
         SalesAccName.Clear()
         ReturnAccName.Clear()
+        PurchaseAccName.Clear()
+        PurchaseReturnAccName.Clear()
 
         GroupName.Clear()
         TypeName.Clear()
@@ -308,7 +312,7 @@ Public Class Items
         bm.ShowHelp("Types", TypeId, TypeName, e, "select cast(Id as varchar(100)) Id,Name from Types where GroupId=" & GroupId.Text.Trim)
     End Sub
 
-    Private Sub txtID_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles txtID.KeyDown, GroupId.KeyDown, CountryId.KeyDown, TypeId.KeyDown, PrintingGroupId.KeyDown, StoreId.KeyDown, ItemType.KeyDown, Limit.KeyDown, SalesAccNo.KeyDown, ReturnAccNo.KeyDown
+    Private Sub txtID_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles txtID.KeyDown, GroupId.KeyDown, CountryId.KeyDown, TypeId.KeyDown, PrintingGroupId.KeyDown, StoreId.KeyDown, ItemType.KeyDown, Limit.KeyDown, SalesAccNo.KeyDown, ReturnAccNo.KeyDown, PurchaseAccNo.KeyDown, PurchaseReturnAccNo.KeyDown
         bm.MyKeyPress(sender, e)
     End Sub
 
@@ -493,6 +497,23 @@ Public Class Items
 
     Private Sub ReturnAccNo_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles ReturnAccNo.KeyUp
         bm.AccNoShowHelp(ReturnAccNo, ReturnAccName, e, , 0, )
+    End Sub
+
+
+    Private Sub PurchaseAccNo_LostFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles PurchaseAccNo.LostFocus
+        bm.AccNoLostFocus(PurchaseAccNo, PurchaseAccName, , 0, )
+    End Sub
+
+    Private Sub PurchaseAccNo_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles PurchaseAccNo.KeyUp
+        bm.AccNoShowHelp(PurchaseAccNo, PurchaseAccName, e, , 0, )
+    End Sub
+
+    Private Sub PurchaseReturnAccNo_LostFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles PurchaseReturnAccNo.LostFocus
+        bm.AccNoLostFocus(PurchaseReturnAccNo, PurchaseReturnAccName, , 0, )
+    End Sub
+
+    Private Sub PurchaseReturnAccNo_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles PurchaseReturnAccNo.KeyUp
+        bm.AccNoShowHelp(PurchaseReturnAccNo, PurchaseReturnAccName, e, , 0, )
     End Sub
 
 

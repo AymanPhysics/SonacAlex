@@ -1339,12 +1339,17 @@ Partial Public Class MainPage
                                                                               sender.Tag = New MyPage With {.Content = frm}
                                                                           End Sub
 
-            AddHandler LoadRadio(1522, G, "Sales Invoices Total").Checked, Sub(sender As Object, e As RoutedEventArgs)
-                                                                               frm = New RPT6 With {.Flag = 3, .Detail = 0}
-                                                                               sender.Tag = New MyPage With {.Content = frm}
-                                                                           End Sub
+        AddHandler LoadRadio(1522, G, "Sales Invoices Total").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                                           frm = New RPT6 With {.Flag = 3, .Detail = 0}
+                                                                           sender.Tag = New MyPage With {.Content = frm}
+                                                                       End Sub
 
-            AddHandler LoadRadio(1523, G, "Stores Sales Total").Checked, Sub(sender As Object, e As RoutedEventArgs)
+        AddHandler LoadRadio(1570, G, "فواتير المبيعات مجمع").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                                           frm = New RPT6 With {.Flag = 3, .Detail = 21}
+                                                                           sender.Tag = New MyPage With {.Content = frm}
+                                                                       End Sub
+
+        AddHandler LoadRadio(1523, G, "Stores Sales Total").Checked, Sub(sender As Object, e As RoutedEventArgs)
                                                                              frm = New RPT6 With {.Flag = 3, .Detail = 9}
                                                                              sender.Tag = New MyPage With {.Content = frm}
                                                                          End Sub
@@ -1491,7 +1496,7 @@ Partial Public Class MainPage
                                                                                   frm = New RPT12 With {.Flag = 4}
                                                                                   sender.Tag = New MyPage With {.Content = frm}
                                                                               End Sub
-        '1569
+        '1570
     End Sub
 
     Private Sub LoadGAccountsReports(CurrentTab As Integer)

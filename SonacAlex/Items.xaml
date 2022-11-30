@@ -309,8 +309,8 @@
                 </TextBox.Background>
             </TextBox>
             <CheckBox Content="السماح بتعديل سعر البيع" Height="16" HorizontalAlignment="Left" Margin="690,265,0,0" x:Name="AllowEditSalesPrice" TabIndex="2" VerticalAlignment="Top" Width="160" IsTabStop="False" />
-            <WindowsFormsHost Margin="515,309,10.4,75.2" x:Name="WFH" Background="{x:Null}" TabIndex="10"/>
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" IsReadOnly="True" IsTabStop="False" Margin="683,0,-64.6,42.2" MaxLength="100" x:Name="SalesAccName" TabIndex="888" VerticalAlignment="Bottom" Width="268">
+            <WindowsFormsHost Margin="515,309,11,156" x:Name="WFH" Background="{x:Null}" TabIndex="10"/>
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="717,0,0,42" MaxLength="100" x:Name="SalesAccName" TabIndex="888" VerticalAlignment="Bottom" Width="268">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -318,8 +318,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب الإيراد" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="512,0,285.4,42.2" x:Name="lblAccNo" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="89" />
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="606,0,210.4,42.2" MaxLength="10" x:Name="SalesAccNo" TabIndex="2" VerticalAlignment="Bottom" Width="70">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب المبيعات" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="512,0,0,42" x:Name="lblAccNo" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="123" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="640,0,0,42" MaxLength="10" x:Name="SalesAccNo" TabIndex="2" VerticalAlignment="Bottom" Width="70">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -327,7 +327,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" IsReadOnly="True" IsTabStop="False" Margin="683,0,-64.6,8.2" MaxLength="100" x:Name="ReturnAccName" TabIndex="888" VerticalAlignment="Bottom" Width="268">
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="717,0,0,8" MaxLength="100" x:Name="ReturnAccName" TabIndex="888" VerticalAlignment="Bottom" Width="268">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -335,8 +335,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب المرتجع" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="512,0,285.4,8.2" x:Name="lblAccNo_Copy" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="89" />
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="606,0,210.4,8.2" MaxLength="10" x:Name="ReturnAccNo" TabIndex="2" VerticalAlignment="Bottom" Width="70">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب م. المبيعات" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="512,0,0,8" x:Name="lblAccNo_Copy" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="123" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="640,0,0,8" MaxLength="10" x:Name="ReturnAccNo" TabIndex="2" VerticalAlignment="Bottom" Width="70">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -371,6 +371,40 @@
             </TextBox>
             <Label Content="الكود الضريبي" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="212,12,0,439.2" x:Name="Label2_Copy1" UseLayoutRounding="True" Width="110" VerticalAlignment="Center"  BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200"/>
             <CheckBox Content="تصدير" Height="16" HorizontalAlignment="Left" Margin="690,203,0,0" x:Name="IsExports" TabIndex="2" VerticalAlignment="Top" Width="120" IsTabStop="False" />
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="717,0,0,108" MaxLength="100" x:Name="PurchaseAccName" TabIndex="888" VerticalAlignment="Bottom" Width="268">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب المشتريات" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="512,0,0,108" x:Name="lblAccNo_Copy1" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="123" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="640,0,0,108" MaxLength="10" x:Name="PurchaseAccNo" TabIndex="2" VerticalAlignment="Bottom" Width="70">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="717,0,0,74" MaxLength="100" x:Name="PurchaseReturnAccName" TabIndex="888" VerticalAlignment="Bottom" Width="268">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب م. المشتريات" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="512,0,0,74" x:Name="lblAccNo_Copy2" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="123" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="640,0,0,74" MaxLength="10" x:Name="PurchaseReturnAccNo" TabIndex="2" VerticalAlignment="Bottom" Width="70">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
         </Grid>
         <Button  Content="أول" HorizontalAlignment="Center"  Margin="165,0,393,12" Name="btnFirst" TabIndex="17" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
         <Button  Content="سابق" HorizontalAlignment="Center"  Margin="243,0,315,12" Name="btnPrevios" TabIndex="18" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
