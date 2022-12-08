@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="372.742" d:DesignWidth="762.478">
+             d:DesignHeight="526.622" d:DesignWidth="1023.278">
     <Grid Background="{DynamicResource Bg}">
         <Grid Name="GridBackground" Margin="12,12,12,104">
             <Grid.Background>
                 <ImageBrush x:Name="Img" ImageSource="Images/surgey.jpg"/>
             </Grid.Background>
-            <TextBox Height="28" HorizontalAlignment="Center" Margin="262,3,356,226" Name="txtID" VerticalAlignment="Center" Width="120" MaxLength="10" TabIndex="0" AutoWordSelection="True" FontFamily="Times New Roman">
+            <TextBox Height="28" Margin="450,169,0,0" Name="txtID" VerticalAlignment="Top" Width="120" MaxLength="10" TabIndex="0" AutoWordSelection="True" FontFamily="Times New Roman">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -18,7 +18,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox Height="28" HorizontalAlignment="Center" Margin="262,36,170,193" Name="txtName" VerticalAlignment="Center" Width="306" MaxLength="1000" TabIndex="1" AutoWordSelection="True">
+            <TextBox Height="28" Margin="450,202,0,0" Name="txtName" VerticalAlignment="Top" Width="306" MaxLength="1000" TabIndex="1" AutoWordSelection="True">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -26,8 +26,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label Content="Id" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="91,3,482,226" Name="lblId" UseLayoutRounding="True" Width="165" VerticalAlignment="Center" BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" />
-            <Label Content="Name" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="91,36,482,193" Name="lblName" UseLayoutRounding="True" Width="165" VerticalAlignment="Center" BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200"/>
+            <Label Content="Id" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="279,169,0,0" Name="lblId" UseLayoutRounding="True" Width="165" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200" />
+            <Label Content="Name" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="279,202,0,0" Name="lblName" UseLayoutRounding="True" Width="165" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#FF078200" Foreground="#FF078200"/>
             <CheckBox Content="مخزن وهمى" Height="16" HorizontalAlignment="Center" Margin="217,147,317,63" Name="CheckBox1" VerticalAlignment="Center" Visibility="Hidden"  Width="120" TabIndex="2" />
             <CheckBox Content="استلام التحويلات أوتوماتيكيا" Height="16" HorizontalAlignment="Center" Margin="259,172,329,38" Name="CheckBox2" VerticalAlignment="Center"  Visibility="Hidden" Width="150" TabIndex="2" />
             <Image Height="119" HorizontalAlignment="Center" Margin="455,19,99,53" Name="Image1" Source="/SonacAlex;component/Images/no.photo.gif" Stretch="Fill" VerticalAlignment="Center" Width="100" Visibility="Hidden" />
@@ -47,7 +47,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <TextBox Height="28" HorizontalAlignment="Center" Margin="217,188,13,10" x:Name="txtName2" VerticalAlignment="Center" Width="424" MaxLength="1000" TabIndex="1" AutoWordSelection="True">
+            <TextBox Height="28" Margin="405,354,0,0" x:Name="txtName2" VerticalAlignment="Top" Width="424" MaxLength="1000" TabIndex="1" AutoWordSelection="True">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -55,7 +55,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" IsReadOnly="True" IsTabStop="False" Margin="347,69,170,160" MaxLength="100" x:Name="TradingFirstAccName" TabIndex="888" VerticalAlignment="Center" Width="221">
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="535,235,0,0" MaxLength="100" x:Name="TradingFirstAccName" TabIndex="888" VerticalAlignment="Top" Width="221">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -63,8 +63,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب أول المدة متاجرة" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="91,69,482,160" x:Name="lblTradingFirstAccNo" UseLayoutRounding="True" VerticalAlignment="Center" Width="165" />
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="262,69,398,160" MaxLength="10" x:Name="TradingFirstAccNo" TabIndex="2" VerticalAlignment="Center" Width="78">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب أول المدة متاجرة" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="279,235,0,0" x:Name="lblTradingFirstAccNo" UseLayoutRounding="True" VerticalAlignment="Top" Width="165" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="450,235,0,0" MaxLength="10" x:Name="TradingFirstAccNo" TabIndex="2" VerticalAlignment="Top" Width="78">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -72,7 +72,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" IsReadOnly="True" IsTabStop="False" Margin="347,102,170,127" MaxLength="100" x:Name="TradingLastAccName" TabIndex="888" VerticalAlignment="Center" Width="221">
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="535,268,0,0" MaxLength="100" x:Name="TradingLastAccName" TabIndex="888" VerticalAlignment="Top" Width="221">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -80,8 +80,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب آخر المدة متاجرة" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="91,102,482,127" x:Name="lblTradingLastAccNo" UseLayoutRounding="True" VerticalAlignment="Center" Width="165" />
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="262,102,398,127" MaxLength="10" x:Name="TradingLastAccNo" TabIndex="3" VerticalAlignment="Center" Width="78">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب آخر المدة متاجرة" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="279,268,0,0" x:Name="lblTradingLastAccNo" UseLayoutRounding="True" VerticalAlignment="Top" Width="165" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="450,268,0,0" MaxLength="10" x:Name="TradingLastAccNo" TabIndex="3" VerticalAlignment="Top" Width="78">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -89,7 +89,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" IsReadOnly="True" IsTabStop="False" Margin="347,135,170,94" MaxLength="100" x:Name="BudgetAccName" TabIndex="888" VerticalAlignment="Center" Width="221">
+            <TextBox AutoWordSelection="True" Height="28" IsReadOnly="True" IsTabStop="False" Margin="535,301,0,0" MaxLength="100" x:Name="BudgetAccName" TabIndex="888" VerticalAlignment="Top" Width="221">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -97,8 +97,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب آخر المدة ميزانية" Foreground="#FF078200" Height="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="91,135,482,94" x:Name="lblBudgetAccNo" UseLayoutRounding="True" VerticalAlignment="Center" Width="165" />
-            <TextBox AutoWordSelection="True" Height="28" HorizontalAlignment="Center" Margin="262,135,398,94" MaxLength="10" x:Name="BudgetAccNo" TabIndex="4" VerticalAlignment="Center" Width="78">
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="حساب آخر المدة ميزانية" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="279,301,0,0" x:Name="lblBudgetAccNo" UseLayoutRounding="True" VerticalAlignment="Top" Width="165" />
+            <TextBox AutoWordSelection="True" Height="28" Margin="450,301,0,0" MaxLength="10" x:Name="BudgetAccNo" TabIndex="4" VerticalAlignment="Top" Width="78">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0" />
@@ -106,7 +106,8 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <CheckBox Content="مبيعات" Height="16" HorizontalAlignment="Left" x:Name="IsSales" TabIndex="13" VerticalAlignment="Top" Width="76" Margin="264,175,0,0" />
+            <CheckBox Content="مبيعات" Height="16" HorizontalAlignment="Left" x:Name="IsSales" TabIndex="13" VerticalAlignment="Top" Width="76" Margin="557,337,0,0" />
+            <CheckBox Content="مشتريات" Height="16" HorizontalAlignment="Left" x:Name="IsPurchase" TabIndex="13" VerticalAlignment="Top" Width="76" Margin="452,337,0,0" />
         </Grid>
         <Button Content="First" HorizontalAlignment="Center"  Margin="174,0,422,10" Name="btnFirst" TabIndex="6" VerticalAlignment="Bottom" Width="82" Background="{DynamicResource BgSave}" />
         <Button Content="Previous" HorizontalAlignment="Center"  Margin="262,0,334,10" Name="btnPrevios" TabIndex="7" VerticalAlignment="Bottom" Width="82" Background="{DynamicResource BgSave}" />

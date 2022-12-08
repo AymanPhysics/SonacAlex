@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-                    d:DesignHeight="503.598" d:DesignWidth="1091.961" >
+                    d:DesignHeight="601.198" d:DesignWidth="1091.961" >
     <Grid Background="{DynamicResource Bg}">
         <Grid HorizontalAlignment="Left" Margin="-4,0,0,0">
             <Grid.Background>
@@ -14,21 +14,21 @@
                 </LinearGradientBrush>
             </Grid.Background>
             <DataGrid AlternatingRowBackground="#37000000" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True" Margin="6,66,0,225" Name="HelpGD" RowBackground="#FFFFFFAF" HorizontalAlignment="Left" Width="400" />
-            <TabControl Name="PanelGroups" Margin="5,5,0,0" HorizontalAlignment="Left" Width="400" UseLayoutRounding="True" Height="137" VerticalAlignment="Top" >
+            <TabControl Name="PanelGroups" Margin="5,5,0,0" HorizontalAlignment="Left" Width="400" UseLayoutRounding="True" Height="189" VerticalAlignment="Top" >
                 <TabItem Header="المجموعات" HorizontalAlignment="Left" Name="TabGroups" VerticalAlignment="Top">
                     <ScrollViewer Name="ScrollViewer1" HorizontalScrollBarVisibility="Disabled">
                         <WrapPanel Name="WGroups" SnapsToDevicePixels="True"></WrapPanel>
                     </ScrollViewer>
                 </TabItem>
             </TabControl>
-            <TabControl Name="PanelTypes" Margin="5,147,0,0" HorizontalAlignment="Left" Width="400" UseLayoutRounding="True" Height="109" VerticalAlignment="Top">
+            <TabControl Name="PanelTypes" Margin="5,198,0,0" HorizontalAlignment="Left" Width="400" UseLayoutRounding="True" Height="102" VerticalAlignment="Top">
                 <TabItem Header="الأنواع" HorizontalAlignment="Left" Name="TabTypes" VerticalAlignment="Top">
                     <ScrollViewer Name="ScrollViewer2" HorizontalScrollBarVisibility="Disabled" Margin="0,-4,0,4">
                         <WrapPanel Name="WTypes"></WrapPanel>
                     </ScrollViewer>
                 </TabItem>
             </TabControl>
-            <TabControl Name="PanelItems" Margin="7,261,0,224" HorizontalAlignment="Left" Width="400" UseLayoutRounding="True">
+            <TabControl Name="PanelItems" Margin="7,305,0,224" HorizontalAlignment="Left" Width="400" UseLayoutRounding="True">
                 <TabItem Header="الأصناف" HorizontalAlignment="Left" Name="TabItems" VerticalAlignment="Top">
                     <ScrollViewer Name="ScrollViewer3" HorizontalScrollBarVisibility="Disabled">
                         <WrapPanel Name="WItems" ></WrapPanel>

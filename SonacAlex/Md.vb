@@ -76,6 +76,7 @@ Module Md
         ISO = 2
         CustomsInvoice = 3
         RealInvoice = 4
+        Payments = 5
 
         Guarantees = 11
         Companies = 12

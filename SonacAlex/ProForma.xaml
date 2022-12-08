@@ -153,7 +153,7 @@
                     </LinearGradientBrush>
                 </TextBox.Background>
             </TextBox>
-            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Freight" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="28,0,0,78" x:Name="Label6_Copy5" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="120" />
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="Freight per Container" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,0,0,78" x:Name="Label6_Copy5" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="138" />
             <TextBox Height="95" Margin="1111,0,10,10" MaxLength="4000" x:Name="PaymentMothod" TabIndex="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" AutoWordSelection="True"
                 AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"   >
                 <TextBox.Background>
@@ -192,6 +192,15 @@
             </TextBox>
             <WindowsFormsHost Margin="0,242,13,115" x:Name="WFH2" Background="{x:Null}" TabIndex="10" HorizontalAlignment="Right" Width="391"/>
             <Button  Content="Account statement"  Margin="598,1,0,0" x:Name="btnPrintBalance" TabIndex="20" VerticalAlignment="Top" Width="190" Background="{DynamicResource BgSave}" IsTabStop="False"/>
+            <TextBox AutoWordSelection="True" Height="28" Margin="155,0,0,45" MaxLength="1000" x:Name="NoOfContainers" TabIndex="17" VerticalAlignment="Bottom" Width="106"  IsTabStop="False">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0" />
+                        <GradientStop Color="#37FFFF00" Offset="1" />
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <Label BorderBrush="#FF078200" BorderThickness="1" Content="No of Containers" Foreground="#FF078200" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,0,0,44" x:Name="Label6_Copy6" UseLayoutRounding="True" VerticalAlignment="Bottom" Width="138" />
         </Grid>
         <Button  Content="أول"  Margin="229,0,0,12" x:Name="btnFirst" TabIndex="13" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />
         <Button  Content="سابق"  Margin="307,0,0,12" x:Name="btnPrevios" TabIndex="14" VerticalAlignment="Bottom" Width="72" Background="{DynamicResource BgSave}" IsTabStop="False" />

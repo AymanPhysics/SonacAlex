@@ -671,6 +671,11 @@ Partial Public Class MainPage
                                                                     End Sub
 
 
+        AddHandler LoadRadio(248, G, "Payments").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                              frm = New ProForma With {.Flag = MyFlag.Payments, .IsPayments = True}
+                                                              sender.Tag = New MyPage With {.Content = frm}
+                                                          End Sub
+
 
         'LoadLabel(240, G, "")
 
@@ -713,7 +718,7 @@ Partial Public Class MainPage
         '                                                              sender.Tag = New MyPage With {.Content = frm}
         '                                                          End Sub
 
-        '247
+        '248
     End Sub
 
     Private Sub LoadGStores(CurrentTab As Integer)
@@ -1326,6 +1331,11 @@ Partial Public Class MainPage
                                                                               sender.Tag = New MyPage With {.Content = frm}
                                                                           End Sub
 
+        AddHandler LoadRadio(1571, G, "فواتير المشتريات مجمع").Checked, Sub(sender As Object, e As RoutedEventArgs)
+                                                                            frm = New RPT6 With {.Flag = 2, .Detail = 21}
+                                                                            sender.Tag = New MyPage With {.Content = frm}
+                                                                        End Sub
+
         If Md.ShowStoresMotionsEditing Then
             AddHandler LoadRadio(1511, G, "Purchase Invoices Editing").Checked, Sub(sender As Object, e As RoutedEventArgs)
                                                                                     frm = New RPT6 With {.Flag = 2, .Detail = 2}
@@ -1496,7 +1506,7 @@ Partial Public Class MainPage
                                                                                   frm = New RPT12 With {.Flag = 4}
                                                                                   sender.Tag = New MyPage With {.Content = frm}
                                                                               End Sub
-        '1570
+        '1571
     End Sub
 
     Private Sub LoadGAccountsReports(CurrentTab As Integer)

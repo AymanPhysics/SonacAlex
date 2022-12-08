@@ -27,7 +27,7 @@ Public Class ProForma
         MyAttach.Flag = Flag
 
         bm.TestSecurity(Me, {btnSave}, {btnDelete}, {btnFirst, btnNext, btnPrevios, btnLast}, {})
-        bm.FillCombo("select Id,Name from Currencies order by Id", CurrencyId)
+        bm.FillCombo("select Id,EnName Name from Currencies order by Id", CurrencyId)
         bm.FillCombo("ShippedPers", ShippedPerId, "")
         bm.FillCombo("Banks2", BankId, "")
         bm.FillCombo("Ports", FromPortId, "")
@@ -35,8 +35,8 @@ Public Class ProForma
 
         If Not Md.ShowCurrency Then CurrencyId.Visibility = Windows.Visibility.Hidden
         LoadResource()
-        bm.Fields = New String() {MainId, SubId, SubId2, "DayDate", "Canceled", "CurrencyId", "IsPosted", "ShippedPerId", "FromPortId", "ToPortId", "Advance", "Remaining", "Total", "AdvanceDate", "RemainingDate", "BankId", "Freight", "PaymentMothod", "Notes", "SubCustomerId"}
-        bm.control = New Control() {CustomerId, txtFlag, txtID, DayDate, Canceled, CurrencyId, IsPosted, ShippedPerId, FromPortId, ToPortId, Advance, Remaining, Total, AdvanceDate, RemainingDate, BankId, Freight, PaymentMothod, Notes, SubCustomerId}
+        bm.Fields = New String() {MainId, SubId, SubId2, "DayDate", "Canceled", "CurrencyId", "IsPosted", "ShippedPerId", "FromPortId", "ToPortId", "Advance", "Remaining", "Total", "AdvanceDate", "RemainingDate", "BankId", "Freight", "PaymentMothod", "Notes", "SubCustomerId", "NoOfContainers"}
+        bm.control = New Control() {CustomerId, txtFlag, txtID, DayDate, Canceled, CurrencyId, IsPosted, ShippedPerId, FromPortId, ToPortId, Advance, Remaining, Total, AdvanceDate, RemainingDate, BankId, Freight, PaymentMothod, Notes, SubCustomerId, NoOfContainers}
         bm.KeyFields = New String() {MainId, SubId, SubId2}
         bm.Table_Name = TableName
 
@@ -64,6 +64,7 @@ Public Class ProForma
             RemainingDate.IsEnabled = False
             BankId.IsEnabled = False
             Freight.IsEnabled = False
+            NoOfContainers.IsEnabled = False
             PaymentMothod.IsEnabled = False
             Notes.IsEnabled = False
             SubCustomerId.IsEnabled = False
@@ -150,7 +151,7 @@ Public Class ProForma
         Dim GCUnitsWeightId As New Forms.DataGridViewComboBoxColumn
         GCUnitsWeightId.HeaderText = "Unit"
         GCUnitsWeightId.Name = GC.UnitsWeightId
-        bm.FillCombo("select 0 Id,'' Name union all select Id,Name from UnitsWeights where Id>0", GCUnitsWeightId)
+        bm.FillCombo("select 0 Id,'' Name union all select Id,EnName from UnitsWeights where Id>0", GCUnitsWeightId)
         G.Columns.Add(GCUnitsWeightId)
 
         G.Columns.Add(GC.UnitsWeightQty, "Weight")
@@ -168,7 +169,7 @@ Public Class ProForma
         bm.FillCombo("select 0 Id,'' Name union all select Id,Name from PriceTypes", GCPriceTypeId)
         G.Columns.Add(GCPriceTypeId)
 
-        G.Columns.Add(GC.Value, "Value")
+        G.Columns.Add(GC.Value, "Amount")
 
         Dim GCTypeOfPriceId As New Forms.DataGridViewComboBoxColumn
         GCTypeOfPriceId.HeaderText = "Type of Price"
@@ -208,6 +209,9 @@ Public Class ProForma
 
         G.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
 
+        For Each c As Forms.DataGridViewColumn In G.Columns
+            c.MinimumWidth = 120
+        Next
         If Flag = MyFlag.ISO Then
             G.Columns(GC.Price).Visible = False
             G.Columns(GC.PriceTypeId).Visible = False
@@ -369,6 +373,7 @@ Public Class ProForma
         RemainingDate.SelectedDate = dt.Rows(0)("RemainingDate")
         BankId.SelectedValue = dt.Rows(0)("BankId")
         Freight.Text = dt.Rows(0)("Freight")
+        NoOfContainers.Text = dt.Rows(0)("NoOfContainers")
         PaymentMothod.Text = dt.Rows(0)("PaymentMothod")
         Notes.Text = dt.Rows(0)("Notes")
         SubCustomerId.Text = dt.Rows(0)("SubCustomerId")
@@ -661,7 +666,7 @@ Public Class ProForma
     End Sub
 
     Dim LopCalc As Boolean = False
-    Private Sub CalcTotal() Handles Advance.TextChanged, Freight.TextChanged
+    Private Sub CalcTotal() Handles Advance.TextChanged, Freight.TextChanged, NoOfContainers.TextChanged
         If LopCalc Or lop Then Return
         Try
             LopCalc = True
@@ -669,7 +674,7 @@ Public Class ProForma
             For i As Integer = 0 To G.Rows.Count - 1
                 Total.Text += Val(G.Rows(i).Cells(GC.Value).Value)
             Next
-            Total.Text += Val(Freight.Text)
+            Total.Text += Val(Freight.Text) * Val(NoOfContainers.Text)
             Remaining.Text = Val(Total.Text) - Val(Advance.Text)
             LopCalc = False
         Catch ex As Exception

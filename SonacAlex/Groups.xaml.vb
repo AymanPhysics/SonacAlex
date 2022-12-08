@@ -27,8 +27,8 @@ Public Class Groups
             btnSetNoImage.Visibility = Visibility.Visible
             Image1.Visibility = Visibility.Visible
         End If
-        bm.Fields = New String() {SubId, SubName, "TradingFirstAccNo", "TradingLastAccNo", "BudgetAccNo", "IsSales"}
-        bm.control = New Control() {txtID, txtName, TradingFirstAccNo, TradingLastAccNo, BudgetAccNo, IsSales}
+        bm.Fields = New String() {SubId, SubName, "TradingFirstAccNo", "TradingLastAccNo", "BudgetAccNo", "IsSales", "IsPurchase"}
+        bm.control = New Control() {txtID, txtName, TradingFirstAccNo, TradingLastAccNo, BudgetAccNo, IsSales, IsPurchase}
         bm.KeyFields = New String() {SubId}
         bm.Table_Name = TableName
         btnNew_Click(sender, e)

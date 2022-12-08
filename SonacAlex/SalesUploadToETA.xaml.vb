@@ -35,10 +35,12 @@ Public Class SalesUploadToETA
         Shared DayDate As String = "DayDate"
         Shared ToId As String = "ToId"
         Shared ToName As String = "ToName"
+        Shared ItemName As String = "ItemName"
         Shared Qty As String = "Qty"
         Shared Total As String = "Total"
-        Shared DiscountValue As String = "DiscountValue"
-        Shared TaxAmount As String = "TaxAmount"
+        Shared Val1 As String = "Val1"
+        Shared Val2 As String = "Val2"
+        Shared Val3 As String = "Val3"
         Shared TotalAfterDiscount As String = "TotalAfterDiscount"
         Shared CurrencyName As String = "CurrencyName"
         Shared Notes As String = "Notes"
@@ -71,10 +73,12 @@ Public Class SalesUploadToETA
         G.Columns.Add(GC.DayDate, "التاريخ")
         G.Columns.Add(GC.ToId, "كود العميل")
         G.Columns.Add(GC.ToName, "اسم العميل")
+        G.Columns.Add(GC.ItemName, "اسم الصنف")
         G.Columns.Add(GC.Qty, "الكمية")
         G.Columns.Add(GC.Total, "القيمة")
-        G.Columns.Add(GC.DiscountValue, "ض.أ.ت.ص")
-        G.Columns.Add(GC.TaxAmount, "ض.ق.م")
+        G.Columns.Add(GC.Val1, "ض.ق.م")
+        G.Columns.Add(GC.Val2, "ض.أ.ت.ص 3%")
+        G.Columns.Add(GC.Val3, "ض.أ.ت.ص 1%")
         G.Columns.Add(GC.TotalAfterDiscount, "صافى الفاتورة")
         G.Columns.Add(GC.CurrencyName, "العملة")
         G.Columns.Add(GC.Notes, "ملاحظات الضرائب")
@@ -82,8 +86,9 @@ Public Class SalesUploadToETA
 
         bm.AddThousandSeparator(G.Columns(GC.Qty), 3)
         bm.AddThousandSeparator(G.Columns(GC.Total))
-        bm.AddThousandSeparator(G.Columns(GC.DiscountValue))
-        bm.AddThousandSeparator(G.Columns(GC.TaxAmount))
+        bm.AddThousandSeparator(G.Columns(GC.Val1))
+        bm.AddThousandSeparator(G.Columns(GC.Val2))
+        bm.AddThousandSeparator(G.Columns(GC.Val3))
         bm.AddThousandSeparator(G.Columns(GC.TotalAfterDiscount))
 
         Dim GCuuid As New Forms.DataGridViewLinkColumn
@@ -106,11 +111,17 @@ Public Class SalesUploadToETA
         G.Columns(GC.IsSelected).FillWeight = 80
         G.Columns(GC.StoreName).FillWeight = 150
         G.Columns(GC.DayDate).FillWeight = 150
-        G.Columns(GC.ToName).FillWeight = 200
+        G.Columns(GC.ToName).FillWeight = 400
+        G.Columns(GC.ItemName).FillWeight = 400
         G.Columns(GC.Notes).FillWeight = 200
-        G.Columns(GC.DocumentDetails).FillWeight = 200
-        G.Columns(GC.uuid).FillWeight = 300
-        G.Columns(GC.longId).FillWeight = 300
+        G.Columns(GC.DocumentDetails).FillWeight = 150
+        G.Columns(GC.uuid).FillWeight = 100
+        G.Columns(GC.longId).FillWeight = 100
+        G.Columns(GC.Total).FillWeight = 200
+        G.Columns(GC.TotalAfterDiscount).FillWeight = 200
+        G.Columns(GC.Val1).FillWeight = 150
+        G.Columns(GC.Val2).FillWeight = 150
+        G.Columns(GC.Val3).FillWeight = 150
 
         G.Columns(GC.Flag).Visible = False
         G.Columns(GC.StoreId).Visible = False
@@ -187,12 +198,14 @@ Public Class SalesUploadToETA
             G.Rows(i).Cells(GC.InvoiceNo).Value = dt.Rows(i)("InvoiceNo").ToString
             G.Rows(i).Cells(GC.DocNo).Value = dt.Rows(i)("DocNo").ToString
             G.Rows(i).Cells(GC.DayDate).Value = dt.Rows(i)("DayDate").ToString
+            G.Rows(i).Cells(GC.ItemName).Value = dt.Rows(i)("ItemName").ToString
             G.Rows(i).Cells(GC.ToId).Value = dt.Rows(i)("ToId").ToString
             G.Rows(i).Cells(GC.ToName).Value = dt.Rows(i)("ToName").ToString
             G.Rows(i).Cells(GC.Qty).Value = dt.Rows(i)("Qty")
             G.Rows(i).Cells(GC.Total).Value = dt.Rows(i)("Total")
-            G.Rows(i).Cells(GC.DiscountValue).Value = dt.Rows(i)("DiscountValue")
-            G.Rows(i).Cells(GC.TaxAmount).Value = dt.Rows(i)("TaxAmount")
+            G.Rows(i).Cells(GC.Val1).Value = dt.Rows(i)("Val1")
+            G.Rows(i).Cells(GC.Val2).Value = dt.Rows(i)("Val2")
+            G.Rows(i).Cells(GC.Val3).Value = dt.Rows(i)("Val3")
             G.Rows(i).Cells(GC.TotalAfterDiscount).Value = dt.Rows(i)("TotalAfterDiscount")
             G.Rows(i).Cells(GC.CurrencyName).Value = dt.Rows(i)("CurrencyName").ToString
             G.Rows(i).Cells(GC.Notes).Value = dt.Rows(i)("Notes").ToString
@@ -219,11 +232,14 @@ Public Class SalesUploadToETA
                 Continue For
             End If
 
-            If G.Rows(i).Cells(GC.uuid).Value.ToString.Length > 0 AndAlso Val(G.Rows(i).Cells(GC.NeedReSubmit).Value.ToString) = 0 Then
-                Continue For
-            ElseIf Val(G.Rows(i).Cells(GC.NeedReSubmit).Value.ToString) = 1 Then
-                tx.CancelDocument(G.Rows(i).Cells(GC.uuid).Value, "سيتم إعادة رفعها بعد تحديثها")
+            If Not G.Rows(i).Cells(GC.uuid).Value Is Nothing AndAlso Not G.Rows(i).Cells(GC.NeedReSubmit).Value Is Nothing Then
+                If G.Rows(i).Cells(GC.uuid).Value.ToString.Length > 0 AndAlso Val(G.Rows(i).Cells(GC.NeedReSubmit).Value.ToString) = 0 Then
+                    Continue For
+                ElseIf Val(G.Rows(i).Cells(GC.NeedReSubmit).Value.ToString) = 1 Then
+                    tx.CancelDocument(G.Rows(i).Cells(GC.uuid).Value, "سيتم إعادة رفعها بعد تحديثها")
+                End If
             End If
+
 
             tx.SubmitDocuments(G.Rows(i).Cells(GC.Flag).Value, G.Rows(i).Cells(GC.StoreId).Value, G.Rows(i).Cells(GC.InvoiceNo).Value)
 

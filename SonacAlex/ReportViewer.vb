@@ -12,6 +12,7 @@ Public Class ReportViewer
     Public paravalue() As String = {}
     Dim MyPageContentWidth As Integer = 0
     Dim PS As PaperSize
+    Dim bm As New BasicMethods
 
     Public Sub ReportViewer_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Try
@@ -48,7 +49,6 @@ Public Class ReportViewer
 
             Dim ServerName As String = con.DataSource
             Dim DataBase As String = con.Database
-
             ReportDoc.Load(RptPath)
 
             Dim stb As New SqlClient.SqlConnectionStringBuilder
@@ -105,6 +105,7 @@ Public Class ReportViewer
 
             CrystalReportViewer1.ReportSource = ReportDoc
         Catch ex As Exception
+            bm.ShowMSG(ex.Message)
         End Try
 
         Try

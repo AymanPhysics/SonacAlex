@@ -468,7 +468,7 @@ Public Class Sales
         G.Columns(GC.UnitId).Visible = False
         G.Columns(GC.Qty).ReadOnly = True
 
-        If Not TestExportAndReturn() Then
+        If Not (TestExportAndReturn() OrElse TestSalesAndReturn() OrElse TestPurchaseAndReturn()) Then
             G.Columns(GC.UnitsWeightQty).Visible = False
             G.Columns(GC.PreQty).Visible = False
             G.Columns(GC.Qty).ReadOnly = False
@@ -513,6 +513,8 @@ Public Class Sales
                 Return 3
             Case FlagState.المستهلكات, FlagState.مردودات_المستهلكات, FlagState.مستهلكات_الداخلي, FlagState.مردودات_مستهلكات_الداخلي, FlagState.مستهلكات_العمليات, FlagState.مردودات_مستهلكات_العمليات
                 Return 4
+            Case FlagState.مشتريات, FlagState.مردودات_مشتريات
+                Return 5
             Case Else
                 Return 0
         End Select
@@ -773,7 +775,11 @@ Br:
             G.Rows(i).Cells(GC.Id).Value = Id
             GetItemNameAndBal(i, Id)
             If G.Rows(i).Cells(GC.SalesPriceTypeId).Value Is Nothing Then
-                G.Rows(i).Cells(GC.SalesPriceTypeId).Value = "1"
+                If Md.IsMyVeryFruits Then
+                    G.Rows(i).Cells(GC.SalesPriceTypeId).Value = "2"
+                Else
+                    G.Rows(i).Cells(GC.SalesPriceTypeId).Value = "1"
+                End If
             End If
 
             'G.Rows(i).Cells(GC.Unit).Value = dr(0)(GC.Unit)
@@ -981,8 +987,13 @@ Br:
 
     Private Sub GridCalcRow(ByVal sender As Object, ByVal e As Forms.DataGridViewCellEventArgs)
         Try
-            If Not TestExportAndReturn() Then
-                G.Rows(e.RowIndex).Cells(GC.SalesPriceTypeId).Value = 1
+            If Not (TestExportAndReturn() OrElse TestSalesAndReturn() OrElse TestPurchaseAndReturn()) Then
+                If Md.IsMyVeryFruits Then
+                    G.Rows(e.RowIndex).Cells(GC.SalesPriceTypeId).Value = "2"
+                Else
+                    G.Rows(e.RowIndex).Cells(GC.SalesPriceTypeId).Value = "1"
+                End If
+
             End If
         Catch ex As Exception
         End Try
@@ -2859,6 +2870,9 @@ Br:
             If Flag = FlagState.مردودات_مشتريات Then
                 btnPrint3.Content = "إذن صرف"
             End If
+
+            lblSalesTypeId.Visibility = Windows.Visibility.Visible
+            SalesTypeId.Visibility = Windows.Visibility.Visible
 
 
         ElseIf TestImportAndReturn() Then
