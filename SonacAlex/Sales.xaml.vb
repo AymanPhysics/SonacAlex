@@ -215,7 +215,7 @@ Public Class Sales
         Catch
         End Try
 
-        btnDelete.Visibility = Windows.Visibility.Hidden
+        If Not Md.IsMyVeryFruits Then btnDelete.Visibility = Windows.Visibility.Hidden
 
     End Sub
 

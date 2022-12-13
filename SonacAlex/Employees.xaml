@@ -815,7 +815,8 @@
             <CheckBox Content="استخراج التقارير" Height="16" HorizontalAlignment="Left" x:Name="UserCanRptExportButton" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="284,494,0,0" />
             <CheckBox Content="استقبال المردودات" Height="16" HorizontalAlignment="Left" x:Name="UserCanRecieve1" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="389,478,0,0" />
             <CheckBox Content="استقبال التحويلات" Height="16" HorizontalAlignment="Left" x:Name="UserCanRecieve2" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="495,478,0,0" />
-            <CheckBox Content="Exports" Height="16" HorizontalAlignment="Left" x:Name="IsExports" TabIndex="17" VerticalAlignment="Top" Width="101" Margin="284,435,0,0"   />
+            <CheckBox Content="إشعارات مدفوعات" Height="16" HorizontalAlignment="Left" x:Name="IsExports" TabIndex="17" VerticalAlignment="Top" Width="120" Margin="284,435,0,0"   />
+            <CheckBox Content="إشعارات صادر" Height="16" HorizontalAlignment="Left" x:Name="IsExports2" TabIndex="17" VerticalAlignment="Top" Width="121" Margin="423,434,0,0"   />
         </Grid>
         <Button Content="First" HorizontalAlignment="Center"  Margin="385,0,636,3" Name="btnFirst" TabIndex="36" VerticalAlignment="Bottom" Width="82" Background="{DynamicResource BgSave}" IsTabStop="False" />
         <Button Content="Previous" HorizontalAlignment="Center"  Margin="473,0,548,3" Name="btnPrevios" TabIndex="37" VerticalAlignment="Bottom" Width="82" Background="{DynamicResource BgSave}" IsTabStop="False" />

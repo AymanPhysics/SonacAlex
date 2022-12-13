@@ -37,6 +37,7 @@ Public Class RPT6
                 rpt.Rpt = "Sales2.rpt"
             Case 1
                 rpt.Rpt = "Sales.rpt"
+                If Md.IsMyVeryFruits Then rpt.Rpt = "Sales_V.rpt"
             Case 2
                 rpt.Rpt = "DeletedSales.rpt"
             Case 3
@@ -328,7 +329,7 @@ Public Class RPT6
 
 
         Select Case Flag
-            Case 3, 30, 9, 4, 10, 8
+            Case 2, 3, 30, 9, 4, 10, 8
             Case Else
                 lblToId.Visibility = Visibility.Hidden
                 ToId.Visibility = Visibility.Hidden

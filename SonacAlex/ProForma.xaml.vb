@@ -35,8 +35,8 @@ Public Class ProForma
 
         If Not Md.ShowCurrency Then CurrencyId.Visibility = Windows.Visibility.Hidden
         LoadResource()
-        bm.Fields = New String() {MainId, SubId, SubId2, "DayDate", "Canceled", "CurrencyId", "IsPosted", "ShippedPerId", "FromPortId", "ToPortId", "Advance", "Remaining", "Total", "AdvanceDate", "RemainingDate", "BankId", "Freight", "PaymentMothod", "Notes", "SubCustomerId", "NoOfContainers"}
-        bm.control = New Control() {CustomerId, txtFlag, txtID, DayDate, Canceled, CurrencyId, IsPosted, ShippedPerId, FromPortId, ToPortId, Advance, Remaining, Total, AdvanceDate, RemainingDate, BankId, Freight, PaymentMothod, Notes, SubCustomerId, NoOfContainers}
+        bm.Fields = New String() {MainId, SubId, SubId2, "DayDate", "Canceled", "CurrencyId", "IsPosted", "ShippedPerId", "FromPortId", "ToPortId", "Advance", "Remaining", "Total", "AdvanceDate", "RemainingDate", "BankId", "Freight", "PaymentMothod", "Notes", "SubCustomerId", "NoOfContainers", "DocNo", "TotalFreight"}
+        bm.control = New Control() {CustomerId, txtFlag, txtID, DayDate, Canceled, CurrencyId, IsPosted, ShippedPerId, FromPortId, ToPortId, Advance, Remaining, Total, AdvanceDate, RemainingDate, BankId, Freight, PaymentMothod, Notes, SubCustomerId, NoOfContainers, DocNo, TotalFreight}
         bm.KeyFields = New String() {MainId, SubId, SubId2}
         bm.Table_Name = TableName
 
@@ -72,6 +72,8 @@ Public Class ProForma
             G2.ReadOnly = True
         End If
 
+        Label1.Visibility = Visibility.Hidden
+        lblLastEntry.Visibility = Visibility.Hidden
 
         btnNew_Click(sender, e)
         CustomerId.Focus()
@@ -102,6 +104,7 @@ Public Class ProForma
         Shared PriceTypeId As String = "PriceTypeId"
         Shared Value As String = "Value"
         Shared TypeOfPriceId As String = "TypeOfPriceId"
+        Shared PalletizedId As String = "PalletizedId"
         Shared Line As String = "Line"
         Shared Sizes As String = "Sizes"
         Shared SD_Notes As String = "SD_Notes"
@@ -163,19 +166,28 @@ Public Class ProForma
 
         G.Columns.Add(GC.Price, "Price")
 
-        Dim GCPriceTypeId As New Forms.DataGridViewComboBoxColumn
-        GCPriceTypeId.HeaderText = "Type"
-        GCPriceTypeId.Name = GC.PriceTypeId
+        Dim GCPriceTypeId As New Forms.DataGridViewComboBoxColumn With {
+            .HeaderText = "Type",
+            .Name = GC.PriceTypeId
+        }
         bm.FillCombo("select 0 Id,'' Name union all select Id,Name from PriceTypes", GCPriceTypeId)
         G.Columns.Add(GCPriceTypeId)
 
         G.Columns.Add(GC.Value, "Amount")
 
-        Dim GCTypeOfPriceId As New Forms.DataGridViewComboBoxColumn
-        GCTypeOfPriceId.HeaderText = "Type of Price"
-        GCTypeOfPriceId.Name = GC.TypeOfPriceId
+        Dim GCTypeOfPriceId As New Forms.DataGridViewComboBoxColumn With {
+            .HeaderText = "Type of Price",
+            .Name = GC.TypeOfPriceId
+        }
         bm.FillCombo("select 0 Id,'' Name union all select Id,Name from TypeOfPrices", GCTypeOfPriceId)
         G.Columns.Add(GCTypeOfPriceId)
+
+        Dim GCPalletizedId As New Forms.DataGridViewComboBoxColumn With {
+            .HeaderText = "Palletized",
+            .Name = GC.PalletizedId
+        }
+        bm.FillCombo("select 0 Id,'' Name union all select Id,Name from Palletized", GCPalletizedId)
+        G.Columns.Add(GCPalletizedId)
 
         G.Columns.Add(GC.Line, "Line")
 
@@ -221,8 +233,8 @@ Public Class ProForma
 
         AddHandler G.CellEndEdit, AddressOf GridCalcRow
         AddHandler G.KeyDown, AddressOf GridKeyDown
+        AddHandler G.SelectionChanged, AddressOf G_SelectionChanged
     End Sub
-
 
 
     Structure GC2
@@ -308,6 +320,7 @@ Public Class ProForma
             G.Rows(i).Cells(GC.PriceTypeId).Value = dt.Rows(i)("PriceTypeId").ToString
             G.Rows(i).Cells(GC.Value).Value = dt.Rows(i)("Value").ToString
             G.Rows(i).Cells(GC.TypeOfPriceId).Value = dt.Rows(i)("TypeOfPriceId").ToString
+            G.Rows(i).Cells(GC.PalletizedId).Value = dt.Rows(i)("PalletizedId").ToString
             G.Rows(i).Cells(GC.Line).Value = dt.Rows(i)("Line").ToString
             G.Rows(i).Cells(GC.Sizes).Value = dt.Rows(i)("Sizes").ToString
             G.Rows(i).Cells(GC.SD_Notes).Value = dt.Rows(i)("SD_Notes").ToString
@@ -347,7 +360,7 @@ Public Class ProForma
             btnSave.IsEnabled = False
             btnDelete.IsEnabled = False
         End If
-
+        G_SelectionChanged(Nothing, Nothing)
     End Sub
 
     Sub FillControls(MyFlag As Integer, MyInvoiceNo As Integer)
@@ -397,6 +410,7 @@ Public Class ProForma
             G.Rows(i).Cells(GC.PriceTypeId).Value = dt.Rows(i)("PriceTypeId").ToString
             G.Rows(i).Cells(GC.Value).Value = dt.Rows(i)("Value").ToString
             G.Rows(i).Cells(GC.TypeOfPriceId).Value = dt.Rows(i)("TypeOfPriceId").ToString
+            G.Rows(i).Cells(GC.PalletizedId).Value = dt.Rows(i)("PalletizedId").ToString
             G.Rows(i).Cells(GC.Line).Value = dt.Rows(i)("Line").ToString
             G.Rows(i).Cells(GC.Sizes).Value = dt.Rows(i)("Sizes").ToString
             G.Rows(i).Cells(GC.SD_Notes).Value = dt.Rows(i)("SD_Notes").ToString
@@ -413,6 +427,7 @@ Public Class ProForma
         lop = False
         CalcTotal()
 
+        G_SelectionChanged(Nothing, Nothing)
     End Sub
 
     Private Sub btnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNext.Click
@@ -464,13 +479,18 @@ Public Class ProForma
             Return
         End If
 
-        If Not bm.SaveGrid(G, TableDetailsName, New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text}, New String() {"ItemsTitleId", "ItemId", "GradeId", "Mark", "ContainerTypeId", "Qty", "QtyTon", "Price", "PriceTypeId", "Value", "SD_Notes", "UnitsWeightId", "UnitsWeightQty", "PreQty", "TypeOfPriceId", "Sizes"}, New String() {GC.ItemsTitleId, GC.Id, GC.GradeId, GC.Mark, GC.ContainerTypeId, GC.Qty, GC.QtyTon, GC.Price, GC.PriceTypeId, GC.Value, GC.SD_Notes, GC.UnitsWeightId, GC.UnitsWeightQty, GC.PreQty, GC.TypeOfPriceId, GC.Sizes}, New VariantType() {VariantType.Integer, VariantType.Integer, VariantType.Integer, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.Decimal, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.String}, New String() {}) Then Return
+        If Not bm.SaveGrid(G, TableDetailsName, New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text}, New String() {"ItemsTitleId", "ItemId", "GradeId", "Mark", "ContainerTypeId", "Qty", "QtyTon", "Price", "PriceTypeId", "Value", "SD_Notes", "UnitsWeightId", "UnitsWeightQty", "PreQty", "TypeOfPriceId", "Sizes", "PalletizedId"}, New String() {GC.ItemsTitleId, GC.Id, GC.GradeId, GC.Mark, GC.ContainerTypeId, GC.Qty, GC.QtyTon, GC.Price, GC.PriceTypeId, GC.Value, GC.SD_Notes, GC.UnitsWeightId, GC.UnitsWeightQty, GC.PreQty, GC.TypeOfPriceId, GC.Sizes, GC.PalletizedId}, New VariantType() {VariantType.Integer, VariantType.Integer, VariantType.Integer, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.Decimal, VariantType.String, VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.Integer, VariantType.String, VariantType.Integer}, New String() {}) Then Return
 
 
         If Not bm.SaveGrid(G2, TableDetailsName2, New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text}, New String() {"MyIndex", "Transfers", "Deductions", "Description", "DayDate"}, New String() {GC2.MyIndex, GC2.Transfers, GC2.Deductions, GC2.Description, GC2.DayDate}, New VariantType() {VariantType.Integer, VariantType.Decimal, VariantType.Decimal, VariantType.String, VariantType.String}, New String() {}, "Line", "Line") Then Return
 
 
         If Not bm.Save(New String() {MainId, SubId, SubId2}, New String() {CustomerId.Text, txtFlag.Text.Trim, txtID.Text},, TableDetailsName) Then Return
+
+        If Not IsPayments Then
+            bm.ExecuteNonQuery("update " & TableName & " set Line=(select isnull(max(Line),0)+1 from ProFormaMaster) where " & MainId & "=" & CustomerId.Text & " and " & SubId & "='" & txtFlag.Text.Trim & "' and " & SubId2 & "=" & txtID.Text)
+        End If
+
 
         If Not DontClear Then btnNew_Click(sender, e)
         AllowSave = True
@@ -491,6 +511,7 @@ Public Class ProForma
         G.Rows(i).Cells(GC.PriceTypeId).Value = Nothing
         G.Rows(i).Cells(GC.Value).Value = Nothing
         G.Rows(i).Cells(GC.TypeOfPriceId).Value = Nothing
+        G.Rows(i).Cells(GC.PalletizedId).Value = Nothing
         G.Rows(i).Cells(GC.Line).Value = Nothing
         G.Rows(i).Cells(GC.Sizes).Value = Nothing
         G.Rows(i).Cells(GC.SD_Notes).Value = Nothing
@@ -512,6 +533,8 @@ Public Class ProForma
                 G.Rows(e.RowIndex).Cells(GC.Qty).Value = bm.Round(Val(G.Rows(e.RowIndex).Cells(GC.UnitsWeightQty).Value) * Val(G.Rows(e.RowIndex).Cells(GC.PreQty).Value))
             ElseIf G.Columns(e.ColumnIndex).Name = GC.PreQty OrElse G.Columns(e.ColumnIndex).Name = GC.UnitsWeightQty Then
                 G.Rows(e.RowIndex).Cells(GC.Qty).Value = bm.Round(Val(G.Rows(e.RowIndex).Cells(GC.UnitsWeightQty).Value) * Val(G.Rows(e.RowIndex).Cells(GC.PreQty).Value))
+            ElseIf G.Columns(e.ColumnIndex).Name = GC.Sizes Then
+                G_SelectionChanged(Nothing, Nothing)
             End If
             G.Rows(e.RowIndex).Cells(GC.QtyTon).Value = bm.Round(Val(G.Rows(e.RowIndex).Cells(GC.Qty).Value) / 1000)
             If Val(G.Rows(e.RowIndex).Cells(GC.PriceTypeId).Value) = 1 Then
@@ -565,6 +588,8 @@ Public Class ProForma
 
         DayDate.Focus()
         lop = False
+        G_SelectionChanged(Nothing, Nothing)
+        Size.Clear()
 
     End Sub
 
@@ -674,7 +699,8 @@ Public Class ProForma
             For i As Integer = 0 To G.Rows.Count - 1
                 Total.Text += Val(G.Rows(i).Cells(GC.Value).Value)
             Next
-            Total.Text += Val(Freight.Text) * Val(NoOfContainers.Text)
+            TotalFreight.Text = Math.Round(Val(Freight.Text) * Val(NoOfContainers.Text), 2, MidpointRounding.AwayFromZero)
+            Total.Text += Val(TotalFreight.Text)
             Remaining.Text = Val(Total.Text) - Val(Advance.Text)
             LopCalc = False
         Catch ex As Exception
@@ -712,9 +738,15 @@ Public Class ProForma
         DontClear = False
         If Not AllowSave Then Return
         Dim rpt As New ReportViewer
-        rpt.Header = CType(Parent, Page).Title
+        If TypeOf (Parent) Is Page Then
+            rpt.Header = CType(Parent, Page).Title
+        ElseIf TypeOf (Parent) Is MyWindow Then
+            rpt.Header = CType(Parent, MyWindow).Title
+        Else
+            Return
+        End If
         rpt.paraname = New String() {"@Flag", "@CustomerId", "@InvoiceNo", "Header"}
-        rpt.paravalue = New String() {Flag, Val(CustomerId.Text), txtID.Text, CType(Parent, Page).Title}
+        rpt.paravalue = New String() {Flag, Val(CustomerId.Text), txtID.Text, rpt.Header}
         Select Case Flag
             Case MyFlag.ProForma
                 rpt.Rpt = "ProFormaOne.rpt"
@@ -778,5 +810,14 @@ Public Class ProForma
         rpt.paravalue = New String() {Val(CustomerId.Text), CustomerName.Text, sender.Content}
         rpt.Rpt = "AccountMotionExports.rpt"
         rpt.Show()
+    End Sub
+
+    Private Sub Size_TextChanged(sender As Object, e As TextChangedEventArgs) Handles Size.TextChanged
+        If G.CurrentRow Is Nothing Then Return
+        G.CurrentRow.Cells(GC.Sizes).Value = Size.Text
+    End Sub
+    Private Sub G_SelectionChanged(sender As Object, e As EventArgs)
+        If G.CurrentRow Is Nothing Then Return
+        Size.Text = G.CurrentRow.Cells(GC.Sizes).Value
     End Sub
 End Class
